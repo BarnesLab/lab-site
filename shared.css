@@ -1,0 +1,241 @@
+/* ============================================
+   SHARED CSS — S2He Lab
+   Reset, variables, navbar, container, footer
+   ============================================ */
+
+/* ---------- Reset ---------- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---------- Variables ---------- */
+:root {
+  --teal: #0e8a96;          /* was #2aafbe — improved contrast 4.56:1 on white */
+  --teal-dark: #14697a;     /* was #1b6f8f — improved contrast 5.8:1 on white */
+  --teal-darker: #123b66;
+  --teal-light: #5ad7f0;
+  --white: #ffffff;
+  --ink: #13253a;
+  --ink-2: #3c4e65;
+  --muted: #4f6478;         /* was #6f8299 — improved contrast 5.5:1 on white */
+  --line: #d8e8f3;
+  --surface: #f4faff;
+  --radius: 14px;
+  --shadow: 0 16px 36px rgba(18, 59, 102, 0.08);
+}
+
+/* ---------- Base ---------- */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink-2);
+  background: linear-gradient(180deg, #f2fbff 0%, #ffffff 20%, #ffffff 100%);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+a { color: var(--teal-dark); text-decoration: none; }
+a:hover { color: var(--teal); }
+
+/* ---------- Focus styles (WCAG 2.4.7) ---------- */
+:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---------- Skip-to-content link (WCAG 2.4.1) ---------- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 9999;
+  padding: 12px 24px;
+  background: var(--ink);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+  color: var(--white);
+}
+
+/* ---------- Screen-reader only utility ---------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+img { max-width: 100%; display: block; }
+
+/* ---------- Container ---------- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.84);
+  border-bottom: 1px solid rgba(13,148,136,0.12);
+  backdrop-filter: blur(14px) saturate(130%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+  transition: box-shadow 0.3s;
+}
+
+.navbar.scrolled {
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+}
+
+.navbar .container {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--teal-dark);
+  letter-spacing: -0.015em;
+}
+
+.nav-brand-logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-brand-logo img {
+  height: 42px;
+  width: auto;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Montserrat', sans-serif;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  position: relative;
+  transition: color 0.2s, background 0.2s;
+  text-decoration: none;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 3px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--teal), var(--teal-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.22s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--teal);
+  background: rgba(42,175,190,0.04);
+  text-decoration: none;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Hamburger toggle ---------- */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink-2);
+  border-radius: 2px;
+  transition: 0.2s;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  padding: 24px 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+  text-align: center;
+  border-top: 1px solid var(--line);
+  margin-top: 40px;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+    padding: 12px 0;
+    gap: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  }
+  .nav-links.open a {
+    padding: 12px 24px;
+    border-radius: 0;
+    width: 100%;
+  }
+  .nav-brand-logo img { height: 36px; }
+}

@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./shared.css">
+<title>S&sup2;He Lab | Sensing Systems for Health</title>
+<style>
+:root {
+  --cyan-light: #ecfeff;
+  --cyan-50: #f0fdfa;
+  --coral: #2f7de1;
+  --coral-light: #5b99ea;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04);
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --font-display: 'Inter', Arial, sans-serif;
+}
+
+body {
+  font-family: var(--font-display);
+  color: var(--gray-700);
+  line-height: 1.7;
+  background: linear-gradient(180deg, #fcfefe 0%, #ffffff 14%, #ffffff 100%);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.nav-links a { color: var(--gray-600); }
+
+.section {
+  padding: 100px 0;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+
+.section-label .label-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-title {
+  font-size: clamp(2rem, 1.45rem + 1.5vw, 2.6rem);
+  font-weight: 800;
+  color: var(--gray-900);
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.section-header {
+  margin-bottom: 56px;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(56, 189, 171, 0.22), transparent 36%),
+    radial-gradient(circle at 85% 12%, rgba(45, 212, 191, 0.14), transparent 34%),
+    linear-gradient(150deg, #084f4b 0%, var(--teal-darker) 54%, #031413 100%);
+  overflow: hidden;
+  padding: 96px 0 72px;
+  isolation: isolate;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 800px 600px at 20% 50%, rgba(13,148,136,0.25) 0%, transparent 70%),
+    radial-gradient(ellipse 600px 400px at 80% 30%, rgba(20,184,166,0.15) 0%, transparent 70%);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(165, 243, 252, 0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(165, 243, 252, 0.09) 1px, transparent 1px);
+  background-size: 52px 52px;
+  opacity: 0.08;
+  z-index: 1;
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.hero-copy {
+  max-width: 720px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  color: rgba(255,255,255,0.9);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 20px;
+}
+
+.hero-badge .badge-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #f97316;
+  box-shadow: 0 0 8px rgba(249, 115, 22, 0.6);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 1.4rem + 2.5vw, 3.2rem);
+  line-height: 1.15;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.hero-title sup {
+  font-size: 0.55em;
+  vertical-align: super;
+  line-height: 0;
+}
+
+.hero-title .accent {
+  color: #7dd8f0;
+}
+
+.hero-body {
+  color: rgba(255,255,255,0.82);
+  font-size: 1.25rem;
+  line-height: 1.72;
+  margin-bottom: 28px;
+  max-width: 660px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.team-collage-wrap {
+  display: grid;
+  gap: 14px;
+}
+
+.team-collage {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.team-shot {
+  position: relative;
+  aspect-ratio: 0.88;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 20px 36px rgba(3, 20, 19, 0.18);
+}
+
+.team-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-shot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(3, 20, 19, 0.38) 100%);
+}
+
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hero-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: rgba(255,255,255,0.84);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.hero-chip .tag-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--teal-light);
+}
+
+
+
+
+
+
+/* ===== Hero visual: research photo ===== */
+.hero-visual {
+  position: relative;
+  z-index: 2;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.16);
+  box-shadow: 0 26px 50px rgba(3, 20, 19, 0.34);
+  background: rgba(255,255,255,0.04);
+}
+
+.hero-visual img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+}
+
+@media (max-width: 900px) {
+  .hero-visual { max-width: 520px; margin: 8px auto 0; }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 0.93rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.24s, background-color 0.24s;
+}
+
+.btn-primary {
+  background: var(--coral);
+  color: var(--white);
+  box-shadow: 0 4px 14px rgba(249,115,22,0.35);
+}
+
+.btn-primary:hover {
+  background: var(--coral-light);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(249,115,22,0.4);
+  color: var(--white);
+}
+
+.btn-outline {
+  background: rgba(255,255,255,0.08);
+  color: var(--white);
+  border: 1.5px solid rgba(255,255,255,0.25);
+}
+
+.btn-outline:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.4);
+  transform: translateY(-3px);
+  color: var(--white);
+}
+
+/* ABOUT / PI */
+.about-grid {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+#about .about-grid {
+  background: linear-gradient(135deg, rgba(42,175,190,0.04) 0%, rgba(90,215,240,0.06) 100%);
+  border: 1px solid rgba(42,175,190,0.12);
+  border-radius: 20px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-frame {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: visible;
+  position: relative;
+  box-shadow: 0 0 0 4px rgba(42,175,190,0.15), 0 12px 28px rgba(18, 59, 102, 0.1);
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+}
+
+.about-name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  margin-bottom: 8px;
+}
+
+.about-title-text {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--gray-600);
+  margin-bottom: 16px;
+}
+
+.about-title-text a {
+  color: var(--teal-dark);
+  font-weight: 600;
+}
+
+.about-title-text a:hover {
+  color: var(--teal);
+  text-decoration: underline;
+}
+
+.about-bio {
+  font-size: 1rem;
+  color: var(--gray-600);
+  line-height: 1.8;
+}
+
+.about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.about-action-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(42,175,190,0.18);
+  background: rgba(255,255,255,0.9);
+  color: var(--teal-dark);
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: transform 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+}
+
+.about-action-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(42,175,190,0.38);
+  color: var(--teal);
+}
+
+#about { padding-bottom: 40px; }
+#about .section-header { margin-bottom: 24px; }
+#team { padding-top: 40px; }
+#team .section-header { margin-bottom: 32px; }
+
+/* TEAM */
+.team-category { margin-bottom: 48px; }
+.team-category:last-child { margin-bottom: 0; }
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.team-card {
+  background: linear-gradient(135deg, rgba(42,175,190,0.04) 0%, rgba(90,215,240,0.06) 100%);
+  border: 1px solid rgba(42,175,190,0.12);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.team-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--white);
+  position: relative;
+}
+
+.team-avatar.teal { background: linear-gradient(135deg, var(--teal), var(--teal-light)); }
+.team-avatar.coral { background: linear-gradient(135deg, var(--coral), var(--coral-light)); }
+.team-avatar.cyan { background: linear-gradient(135deg, #06b6d4, #22d3ee); }
+.team-avatar.emerald { background: linear-gradient(135deg, #059669, #34d399); }
+.team-avatar.violet { background: linear-gradient(135deg, #7c3aed, #a78bfa); }
+.team-avatar.rose { background: linear-gradient(135deg, #e11d48, #fb7185); }
+.team-avatar.amber { background: linear-gradient(135deg, #d97706, #fbbf24); }
+.team-avatar.sky { background: linear-gradient(135deg, #0284c7, #38bdf8); }
+
+.team-avatar.photo {
+  padding: 3px;
+  background: #ffffff;
+  border: 1px solid rgba(27,111,143,0.2);
+  box-shadow: 0 8px 20px rgba(18, 59, 102, 0.12);
+}
+
+.team-avatar.photo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.team-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--gray-800);
+  margin-bottom: 4px;
+}
+
+.team-role {
+  font-size: 0.82rem;
+  color: var(--gray-500);
+  font-weight: 600;
+}
+
+.team-years {
+  font-size: 0.78rem;
+  color: var(--gray-400);
+  margin-top: 4px;
+}
+
+/* CONNECT */
+.connect-section {
+  padding: 80px 0;
+  background: linear-gradient(160deg, #0c3b4a 0%, #0a2e3d 40%, #082530 100%);
+  color: #ffffff;
+}
+
+.connect-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.connect-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 12px;
+}
+
+.connect-label svg { opacity: 0.6; }
+
+.connect-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 1.3rem + 1.5vw, 2.4rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 14px;
+}
+
+.connect-subtitle {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.75);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.connect-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.connect-card {
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px);
+  padding: 24px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.25s;
+}
+
+.connect-card:hover {
+  border-color: rgba(42,175,190,0.4);
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-2px);
+}
+
+.connect-card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(42,175,190,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  color: #5ad7f0;
+}
+
+.connect-card-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 4px;
+}
+
+.connect-card-value {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* FOOTER */
+.footer {
+  background: #082530;
+  padding: 32px 0;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  margin-top: 0;
+}
+
+.footer p {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.82rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: minmax(0, 1.3fr) minmax(240px, 0.7fr); }
+  .about-grid { grid-template-columns: 180px 1fr; gap: 32px; }
+}
+
+@media (max-width: 768px) {
+  .section { padding: 72px 0; }
+  .hero { min-height: auto; padding: 122px 0 72px; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .team-collage { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .section-title { font-size: 2rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 24px; }
+  .photo-frame { width: 140px; height: 140px; margin: 0 auto; }
+  #about .about-grid { padding: 24px; }
+  .team-avatar { width: 100px; height: 100px; }
+  .team-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+  .connect-cards { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .hero-title { font-size: 1.82rem; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { justify-content: center; }
+  .team-collage { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- NAVIGATION -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main">
+  <div class="container">
+    <a href="./index.html" class="nav-brand" aria-label="S2He Lab home">
+      <span class="nav-brand-logo"><img src="logo.png" alt="S2He Lab logo"></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="./index.html" class="active">Home</a></li>
+      <li><a href="./director.html" target="_blank" rel="noopener">Director<span class="sr-only"> (opens in new tab)</span></a></li>
+      <li><a href="./people.html">People</a></li>
+      <li><a href="./publications.html">Publications</a></li>
+      <li><a href="./projects.html">Projects</a></li>
+      <li><a href="./join-us.html">Join Us</a></li>
+      <li><a href="https://github.com/BarnesLab" target="_blank" rel="noopener">GitHub<span class="sr-only"> (opens in new tab)</span></a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="hero-badge"><span class="badge-dot"></span>University of Virginia · School of Engineering</div>
+        <h1 class="hero-title">Sensing Systems for<br>Health (<span class="accent">S<sup>2</sup>He</span>) Lab</h1>
+        <p class="hero-body">We design and develop human-centered intelligent systems that combine mobile sensing, wearable technologies, and AI to understand and improve human health and well-being in everyday life.</p>
+        <div class="hero-actions">
+          <a href="./people.html" class="btn btn-primary">Meet the Team</a>
+          <a href="./join-us.html" class="btn btn-outline">Join the Lab</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="./assets/projects/commsense-cover.png" alt="A clinician wearing a smartwatch running CommSense during a patient visit">
+      </div>
+    </div>
+  </div>
+</section>
+
+<main id="main-content">
+<!-- ABOUT / PI -->
+<section class="section" id="about" aria-labelledby="about-heading">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">
+        <span class="label-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </span>
+        Director
+      </div>
+      <h2 class="section-title" id="about-heading">Lab Director</h2>
+      <div style="width: 48px; height: 3px; background: linear-gradient(90deg, var(--teal), var(--teal-light)); border-radius: 2px; margin-top: 8px;"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-photo">
+        <div class="photo-frame">
+          <img src="assets/people/laura_barnes-1.jpg" alt="Laura E. Barnes">
+        </div>
+      </div>
+      <div class="about-info">
+        <h3 class="about-name">Laura E. Barnes, Ph.D.</h3>
+        <p class="about-title-text"><a href="https://engineering.virginia.edu/faculty/laura-barnes" target="_blank" rel="noopener">Lawrence R. Quarles Professor of Engineering and Applied Science</a><br><a href="https://engineering.virginia.edu/departments/systems-and-information-engineering" target="_blank" rel="noopener">Professor, Department of Systems and Information Engineering</a><br><a href="https://engineering.virginia.edu/labs-groups/link-lab" target="_blank" rel="noopener">Associate Director, UVA Engineering Link Lab</a><br><a href="./director.html" target="_blank" rel="noopener">Director, Sensing Systems for Health (S<sup>2</sup>He) Lab</a><br><a href="https://www.virginia.edu/" target="_blank" rel="noopener">University of Virginia</a></p>
+        <p class="about-bio">Laura E. Barnes is the Lawrence R. Quarles Professor of Engineering and Applied Science and a Professor in the Department of Systems and Information Engineering at the University of Virginia, as well as Associate Director of the Link Lab. She directs the Sensing Systems for Health (S<sup>2</sup>He) Lab, where her research integrates mobile sensing, wearable technologies, and human-centered AI to study health and well-being in real-world settings. Her work spans digital mental health, longitudinal behavioral modeling, and computational approaches to patient-clinician communication.</p>
+        <div class="about-actions">
+          <a href="./director.html" target="_blank" rel="noopener" class="about-action-link">View Director Page<span class="sr-only"> (opens in new tab)</span></a>
+          <a href="https://scholar.google.com/citations?user=h-Lr0bQAAAAJ&amp;hl=en" target="_blank" rel="noopener" class="about-action-link">Google Scholar<span class="sr-only"> (opens in new tab)</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section" id="team" aria-labelledby="team-heading">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">
+        <span class="label-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </span>
+        Our People
+      </div>
+      <h2 class="section-title" id="team-heading">Current Members</h2>
+    </div>
+    <div class="team-category">
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar photo coral">
+            <img src="assets/people/zachary-king.jpg" alt="Zachary King">
+          </div>
+          <div class="team-name">Zachary King</div>
+          <div class="team-role">Postdoctoral Fellow</div>
+          <div class="team-years">2026 &ndash; present</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar photo emerald">
+            <img src="assets/people/indrajeet-ghosh.jpg" alt="Indrajeet Ghosh">
+          </div>
+          <div class="team-name"><a href="https://sites.google.com/view/indrajeetghosh/" target="_blank" rel="noopener">Indrajeet Ghosh</a></div>
+          <div class="team-role">Postdoctoral Fellow</div>
+          <div class="team-years">2025 &ndash; present</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar photo cyan">
+            <img src="assets/people/Alejandro_IDPicture-1.png" alt="Alejandro Vistorte Salgado">
+          </div>
+          <div class="team-name"><a href="https://sites.google.com/view/a2vs" target="_blank" rel="noopener">Alejandro Vistorte Salgado</a></div>
+          <div class="team-role">PhD, Systems Engineering</div>
+          <div class="team-years">2025 &ndash; present</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar photo violet">
+            <img src="assets/people/xinyu-profile.jpeg" alt="Xinyu Chen">
+          </div>
+          <div class="team-name"><a href="https://www.linkedin.com/in/xinyu-chen-5a5220255/" target="_blank" rel="noopener">Xinyu Chen</a></div>
+          <div class="team-role">PhD, Systems Engineering</div>
+          <div class="team-years">2025 &ndash; present</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar photo rose">
+            <img src="assets/people/Screen-Shot-2023-08-14-at-11.15.59-AM.png" alt="Sabbir Ahmed">
+          </div>
+          <div class="team-name"><a href="https://sites.google.com/view/sabbir-eub" target="_blank" rel="noopener">Sabbir Ahmed</a></div>
+          <div class="team-role">PhD, Systems Engineering</div>
+          <div class="team-years">2023 &ndash; present</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar photo amber">
+            <img src="assets/people/23UVA_Ariful_1074pp.jpg" alt="Ariful Islam">
+          </div>
+          <div class="team-name">Ariful Islam</div>
+          <div class="team-role">PhD, Systems Engineering</div>
+          <div class="team-years">2024 &ndash; present</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar photo sky">
+            <img src="assets/people/Arafat.jpg" alt="Arafat Rahman">
+          </div>
+          <div class="team-name"><a href="https://arafat245.github.io/" target="_blank" rel="noopener">Arafat Rahman</a></div>
+          <div class="team-role">PhD, Systems Engineering</div>
+          <div class="team-years">2022 &ndash; present</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar photo teal">
+            <img src="assets/people/zhiyuan.jpeg" alt="Zhiyuan Wang">
+          </div>
+          <div class="team-name"><a href="https://sites.google.com/view/zhiyuanw" target="_blank" rel="noopener">Zhiyuan Wang</a></div>
+          <div class="team-role">PhD, Systems Engineering</div>
+          <div class="team-years">2021 &ndash; present</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="section" id="news" aria-labelledby="news-heading" style="padding-top:50px">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">
+        <span class="label-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><line x1="10" y1="6" x2="18" y2="6"/><line x1="10" y1="10" x2="18" y2="10"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </span>
+        Latest News
+      </div>
+      <h2 class="section-title" id="news-heading">Lab News</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px;">
+      <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm);">
+        <div style="font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; color: var(--teal-dark); margin-bottom: 10px;">March 2026</div>
+        <h3 style="font-size: 1rem; font-weight: 500; color: var(--gray-900); margin-bottom: 10px; line-height: 1.35;">CALLM Paper Accepted at ACM CHI 2026</h3>
+        <p style="font-size: 0.9rem; color: var(--gray-500); line-height: 1.65;">Our work on understanding cancer survivors' emotions via mobile diaries and context-aware language models has been accepted at CHI 2026.</p>
+      </div>
+      <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm);">
+        <div style="font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; color: var(--teal-dark); margin-bottom: 10px;">February 2026</div>
+        <h3 style="font-size: 1rem; font-weight: 500; color: var(--gray-900); margin-bottom: 10px; line-height: 1.35;">SocialPulse: On-Device Social Interaction Detection</h3>
+        <p style="font-size: 0.9rem; color: var(--gray-500); line-height: 1.65;">New preprint on detecting social interactions in naturalistic settings using smartwatch multimodal sensing, led by Sabbir Ahmed.</p>
+      </div>
+      <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm);">
+        <div style="font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; color: var(--teal-dark); margin-bottom: 10px;">January 2026</div>
+        <h3 style="font-size: 1rem; font-weight: 500; color: var(--gray-900); margin-bottom: 10px; line-height: 1.35;">Dr. Zachary King Joins the Lab</h3>
+        <p style="font-size: 0.9rem; color: var(--gray-500); line-height: 1.65;">We welcome Dr. Zachary King as a new postdoctoral fellow, bringing expertise in wearable sensing and behavioral modeling.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- CONNECT -->
+<section class="connect-section">
+  <div class="container">
+    <div class="connect-header">
+      <div class="connect-label">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Get in Touch
+      </div>
+      <h2 class="connect-title">Connect With Us</h2>
+      <p class="connect-subtitle">Interested in collaborating, joining the lab, or learning more about our research? We would love to hear from you. See <a href="./join-us.html" style="color: #5ad7f0; font-weight: 700; text-decoration: underline; text-underline-offset: 3px;">Join Us</a> for opportunities.</p>
+    </div>
+    <div class="connect-cards">
+      <a href="mailto:lb3dp@virginia.edu" class="connect-card">
+        <div class="connect-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="connect-card-label">Email</div>
+        <div class="connect-card-value">lb3dp@virginia.edu</div>
+      </a>
+      <div class="connect-card">
+        <div class="connect-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div class="connect-card-label">Office</div>
+        <div class="connect-card-value">(434) 924-1723</div>
+      </div>
+      <div class="connect-card">
+        <div class="connect-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="connect-card-label">Location</div>
+        <div class="connect-card-value">Link Lab 277 (2nd floor Olsson Hall)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 S<sup>2</sup>He Lab &mdash; Sensing Systems for Health &amp; Engineering Laboratory. University of Virginia.</p>
+    <p style="font-size: 0.78rem; margin-top: 8px;">This site meets WCAG 2.1 Level AA standards. <a href="https://wave.webaim.org" target="_blank" rel="noopener" style="color: rgba(255,255,255,0.5); text-decoration: underline;">Verify with WAVE<span class="sr-only"> (opens in new tab)</span></a></p>
+  </div>
+</footer>
+
+<script>
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+  const spans = navToggle.querySelectorAll('span');
+  if (navLinks.classList.contains('open')) {
+    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+    spans[1].style.opacity = '0';
+    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+  } else {
+    spans[0].style.transform = '';
+    spans[1].style.opacity = '';
+    spans[2].style.transform = '';
+  }
+});
+
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    const spans = navToggle.querySelectorAll('span');
+    spans[0].style.transform = '';
+    spans[1].style.opacity = '';
+    spans[2].style.transform = '';
+  });
+});
+
+// Shuffle team cards
+(function() {
+  const grids = document.querySelectorAll('.team-grid');
+  grids.forEach((grid) => {
+    const cards = Array.from(grid.children);
+    for (let i = cards.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [cards[i], cards[j]] = [cards[j], cards[i]];
+    }
+    cards.forEach(card => grid.appendChild(card));
+  });
+})();
+</script>
+</body>
+</html>

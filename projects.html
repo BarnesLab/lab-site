@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./shared.css" />
+    <title>S&sup2;He Lab | Projects</title>
+
+    <style>
+      .hero {
+        padding: 122px 0 34px;
+      }
+
+      .hero-lead {
+        max-width: 68ch;
+        font-size: 1.02rem;
+        line-height: 1.7;
+        color: var(--muted, #4a4a52);
+        margin-top: 4px;
+      }
+
+      .eyebrow {
+        font-size: 0.78rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 800;
+        color: var(--teal-dark);
+        margin-bottom: 10px;
+      }
+
+      h1 {
+        font-family: "Inter", sans-serif;
+        color: var(--ink);
+        font-size: clamp(1.4rem, 1.2rem + 1vw, 1.8rem);
+        line-height: 1.14;
+        margin-bottom: 10px;
+      }
+
+      .hero p {
+        max-width: 900px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        padding-bottom: 72px;
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--white);
+        box-shadow: 0 2px 0 rgba(18, 59, 102, 0.03);
+        padding: 18px;
+        transition:
+          box-shadow 0.2s,
+          border-color 0.2s;
+      }
+
+      .card:hover {
+        box-shadow: 0 4px 16px rgba(18, 59, 102, 0.1);
+        border-color: var(--teal);
+      }
+
+      .card-head {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 8px;
+      }
+
+      .card h2 {
+        font-family: "Inter", sans-serif;
+        font-size: 0.95rem;
+        color: var(--ink);
+        line-height: 1.35;
+      }
+
+      .badge {
+        font-size: 0.76rem;
+        font-weight: 800;
+        color: var(--teal-darker);
+        background: rgba(42, 175, 190, 0.15);
+        border: 1px solid rgba(42, 175, 190, 0.22);
+        border-radius: 999px;
+        padding: 5px 10px;
+        max-width: 240px;
+        white-space: normal;
+        border-radius: 10px;
+        line-height: 1.1;
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 10px 0 10px;
+      }
+
+      .meta span {
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--muted);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 4px 10px;
+      }
+
+      .card p {
+        font-size: 0.94rem;
+        color: var(--ink-2);
+      }
+
+      .links {
+        margin-top: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .links a {
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--teal-dark);
+      }
+
+      .links a:hover {
+        text-decoration: underline;
+      }
+
+      .card-img {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        border-radius: 10px;
+        background: linear-gradient(
+          135deg,
+          rgba(42, 175, 190, 0.12) 0%,
+          rgba(90, 215, 240, 0.15) 100%
+        );
+        margin-bottom: 14px;
+        padding: 8px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+      .card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 6px;
+      }
+
+      .notice {
+        margin: 10px 0 22px;
+        border-left: 4px solid var(--teal);
+        background: rgba(42, 175, 190, 0.08);
+        border-radius: 8px;
+        padding: 10px 12px;
+        color: var(--ink-2);
+        font-size: 0.92rem;
+      }
+
+      @media (max-width: 960px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="navbar" aria-label="Main">
+      <div class="container">
+        <a href="./index.html" class="nav-brand" aria-label="S2He home">
+          <span class="nav-brand-logo"
+            ><img src="./logo.png" alt="S2He Lab logo"
+          /></span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="./index.html">Home</a></li>
+          <li>
+            <a href="./director.html" target="_blank" rel="noopener"
+              >Director<span class="sr-only"> (opens in new tab)</span></a
+            >
+          </li>
+          <li><a href="./people.html">People</a></li>
+          <li><a href="./publications.html">Publications</a></li>
+          <li><a href="./projects.html" class="active">Projects</a></li>
+          <li><a href="./join-us.html">Join Us</a></li>
+          <li>
+            <a
+              href="https://github.com/BarnesLab"
+              target="_blank"
+              rel="noopener"
+              >GitHub<span class="sr-only"> (opens in new tab)</span></a
+            >
+          </li>
+        </ul>
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="container">
+        <div class="eyebrow">S<sup>2</sup>He Lab Research</div>
+        <h1>Selected Research Projects</h1>
+        <p class="hero-lead">
+          Our research brings together human-centered AI, mobile and wearable
+          sensing, and computational methods to understand health and behavior
+          in everyday life and develop new approaches to sensing, assessment,
+          and intervention.
+        </p>
+      </div>
+    </header>
+
+    <main id="main-content" class="container">
+      <section class="grid">
+        <article class="card" id="project-social-anxiety">
+          <a
+            href="./project-social-anxiety.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="card-img">
+              <img
+                src="./assets/projects/social-anxiety-cover.png"
+                alt="Context-Aware Micro-Interventions"
+              />
+            </div>
+            <div class="card-head">
+              <h2>Context-Aware Micro-Interventions for Social Anxiety</h2>
+              <span class="badge">NIMH R01</span>
+            </div>
+            <div class="meta">
+              <span>Digital Mental Health</span>
+              <span>Mobile Sensing</span>
+              <span>Just-in-Time Intervention</span>
+            </div>
+            <p>
+              We integrate mobile and wearable sensing with computational models
+              of behavior and context to understand social anxiety in everyday
+              life and deliver personalized interventions in moments of need.
+            </p>
+          </a>
+        </article>
+
+        <article class="card" id="project-pedneuro">
+          <a
+            href="./project-pedneuro.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="card-img">
+              <img
+                src="./assets/projects/u-extend-cover.png"
+                alt="Multimodal Biomarkers in Pediatric Neurologic Disease"
+              />
+            </div>
+            <div class="card-head">
+              <h2>Multimodal Biomarkers in Pediatric Neurologic Disease</h2>
+              <span class="badge"
+                >Coulter Translational Research Partnership</span
+              >
+            </div>
+            <div class="meta">
+              <span>Wearable Sensing</span>
+              <span>Multimodal Biomarkers</span>
+              <span>Motor Function</span>
+              <span>Pediatric Health</span>
+            </div>
+            <p>
+              Develop novel multimodal biomarkers to characterize disease in
+              children with pediatric-onset multiple sclerosis (POMS), spinal
+              muscular atrophy (SMA), and Duchenne muscular dystrophy (DMD),
+              including wearable-derived measures of real-world motor function,
+              ultrasound measures of muscle structure, and neuroimaging measures
+              of central nervous system injury.
+            </p>
+          </a>
+        </article>
+
+        <article class="card" id="project-commsense">
+          <a
+            href="./project-commsense.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="card-img">
+              <img
+                src="./assets/projects/commsense-cover.png"
+                alt="CommSense Communication"
+              />
+            </div>
+            <div class="card-head">
+              <h2>
+                CommSense: Novel Methods to Measure Patient-Clinician
+                Communication
+              </h2>
+              <span class="badge"
+                >Betty Irene Moore Fellowship for Nurse Leaders and
+                Innovators</span
+              >
+            </div>
+            <div class="meta">
+              <span>Clinical Communication</span>
+              <span>Multimodal Sensing</span>
+              <span>Human-Centered AI</span>
+            </div>
+            <p>
+              Combine multimodal sensing and AI to characterize
+              patient-clinician communication and design technologies that
+              support high-quality, compassionate care.
+            </p>
+          </a>
+        </article>
+
+        <article class="card" id="project-social-pulse">
+          <a
+            href="./project-social-pulse.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="card-img">
+              <img
+                src="./assets/projects/social-pulse-cover.svg"
+                alt="SocialPulse On-Device Social Interaction Sensing"
+              />
+            </div>
+            <div class="card-head">
+              <h2>SocialPulse: Real-World Social Interaction Sensing</h2>
+              <span class="badge">NIMH R01</span>
+            </div>
+            <div class="meta">
+              <span>Wearable Sensing</span>
+              <span>Social Behavior</span>
+              <span>Privacy-Preserving AI</span>
+            </div>
+            <p>
+              Develop privacy-preserving wearable sensing methods to detect and
+              characterize an individual's social environment in everyday life
+              and better understand their relationship to mental health and
+              well-being.
+            </p>
+          </a>
+        </article>
+
+        <article class="card" id="project-wellconnected">
+          <a
+            href="./project-wellconnected.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="card-img">
+              <img
+                src="./assets/projects/wellconnected-cover.png"
+                alt="WellConnected Friendship Networks"
+              />
+            </div>
+            <div class="card-head">
+              <h2>WellConnected: Community Health &amp; Well-Being</h2>
+              <span class="badge">TYDE</span>
+            </div>
+            <div class="meta">
+              <span>Digital Health</span>
+              <span>Social Connection</span>
+              <span>Intervention Design</span>
+            </div>
+            <p>
+              Develop personalized digital approaches to strengthen social
+              connection and well-being by understanding how young people's
+              behaviors, experiences, and social environments interact in
+              everyday life.
+            </p>
+          </a>
+        </article>
+
+        <article class="card" id="project-medication-adherence">
+          <a
+            href="./project-medication-adherence.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="card-img">
+              <img
+                src="./assets/projects/medication-adherence-cover.png"
+                alt="Medication Adherence Monitoring"
+              />
+            </div>
+            <div class="card-head">
+              <h2>
+                Multiscale Modeling and Intervention for Improving Medication
+                Adherence
+              </h2>
+              <span class="badge">NCI R01</span>
+            </div>
+            <div class="meta">
+              <span>Cancer Survivorship</span>
+              <span>Medication Adherence</span>
+              <span>Multimodal Sensing</span>
+            </div>
+            <p>
+              Integrate longitudinal mobile, wearable, self-report, and
+              medication-taking data to model the behavioral and contextual
+              factors that shape adherence to endocrine therapy among breast
+              cancer survivors.
+            </p>
+          </a>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        S<sup>2</sup>He Lab &middot; University of Virginia<br /><span
+          style="font-size: 0.78rem"
+          >This site meets WCAG 2.1 Level AA standards.
+          <a
+            href="https://wave.webaim.org"
+            target="_blank"
+            rel="noopener"
+            style="color: inherit; text-decoration: underline"
+            >Verify with WAVE<span class="sr-only"> (opens in new tab)</span></a
+          ></span
+        >
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("navToggle").addEventListener("click", () => {
+        document.getElementById("navLinks").classList.toggle("open");
+        const btn = document.getElementById("navToggle");
+        const expanded = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", String(!expanded));
+      });
+    </script>
+  </body>
+</html>

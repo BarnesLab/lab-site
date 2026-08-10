@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="300" viewBox="0 0 600 300">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#123b66"/>
+      <stop offset="100%" style="stop-color:#0f2f2d"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="300" fill="url(#bg)"/>
+  <!-- Community circles (people) in a ring -->
+  <circle cx="300" cy="120" r="70" fill="none" stroke="#2aafbe" stroke-width="1" opacity="0.15" stroke-dasharray="4,4"/>
+  <!-- People around the ring -->
+  <circle cx="300" cy="50" r="14" fill="#2aafbe" fill-opacity="0.2" stroke="#2aafbe" stroke-width="1.5" stroke-opacity="0.5"/>
+  <circle cx="360" cy="65" r="12" fill="#5ad7f0" fill-opacity="0.15" stroke="#5ad7f0" stroke-width="1.5" stroke-opacity="0.45"/>
+  <circle cx="370" cy="120" r="14" fill="#2aafbe" fill-opacity="0.2" stroke="#2aafbe" stroke-width="1.5" stroke-opacity="0.5"/>
+  <circle cx="360" cy="175" r="12" fill="#5ad7f0" fill-opacity="0.15" stroke="#5ad7f0" stroke-width="1.5" stroke-opacity="0.45"/>
+  <circle cx="300" cy="190" r="14" fill="#2aafbe" fill-opacity="0.2" stroke="#2aafbe" stroke-width="1.5" stroke-opacity="0.5"/>
+  <circle cx="240" cy="175" r="12" fill="#5ad7f0" fill-opacity="0.15" stroke="#5ad7f0" stroke-width="1.5" stroke-opacity="0.45"/>
+  <circle cx="230" cy="120" r="14" fill="#2aafbe" fill-opacity="0.2" stroke="#2aafbe" stroke-width="1.5" stroke-opacity="0.5"/>
+  <circle cx="240" cy="65" r="12" fill="#5ad7f0" fill-opacity="0.15" stroke="#5ad7f0" stroke-width="1.5" stroke-opacity="0.45"/>
+  <!-- Connections between people (friendship network) -->
+  <line x1="300" y1="50" x2="360" y2="65" stroke="#5ad7f0" stroke-width="1" opacity="0.25"/>
+  <line x1="360" y1="65" x2="370" y2="120" stroke="#5ad7f0" stroke-width="1" opacity="0.25"/>
+  <line x1="370" y1="120" x2="360" y2="175" stroke="#5ad7f0" stroke-width="1" opacity="0.25"/>
+  <line x1="360" y1="175" x2="300" y2="190" stroke="#5ad7f0" stroke-width="1" opacity="0.25"/>
+  <line x1="300" y1="190" x2="240" y2="175" stroke="#5ad7f0" stroke-width="1" opacity="0.25"/>
+  <line x1="240" y1="175" x2="230" y2="120" stroke="#5ad7f0" stroke-width="1" opacity="0.25"/>
+  <line x1="230" y1="120" x2="240" y2="65" stroke="#5ad7f0" stroke-width="1" opacity="0.25"/>
+  <line x1="240" y1="65" x2="300" y2="50" stroke="#5ad7f0" stroke-width="1" opacity="0.25"/>
+  <!-- Cross connections -->
+  <line x1="300" y1="50" x2="370" y2="120" stroke="#2aafbe" stroke-width="0.8" opacity="0.15"/>
+  <line x1="300" y1="50" x2="230" y2="120" stroke="#2aafbe" stroke-width="0.8" opacity="0.15"/>
+  <line x1="360" y1="65" x2="240" y2="175" stroke="#2aafbe" stroke-width="0.8" opacity="0.12"/>
+  <line x1="240" y1="65" x2="360" y2="175" stroke="#2aafbe" stroke-width="0.8" opacity="0.12"/>
+  <line x1="370" y1="120" x2="300" y2="190" stroke="#2aafbe" stroke-width="0.8" opacity="0.12"/>
+  <line x1="230" y1="120" x2="300" y2="190" stroke="#2aafbe" stroke-width="0.8" opacity="0.12"/>
+  <!-- Heart in center -->
+  <path d="M294,112 C294,106 286,102 286,108 C286,114 294,122 300,128 C306,122 314,114 314,108 C314,102 306,106 306,112 C306,116 300,122 300,128 C300,122 294,116 294,112Z" fill="#2aafbe" fill-opacity="0.25" stroke="#5ad7f0" stroke-width="1" stroke-opacity="0.4"/>
+  <!-- Outer community indicators -->
+  <circle cx="120" cy="80" r="6" fill="#5ad7f0" fill-opacity="0.12" stroke="#5ad7f0" stroke-width="1" stroke-opacity="0.2"/>
+  <circle cx="480" cy="80" r="6" fill="#5ad7f0" fill-opacity="0.12" stroke="#5ad7f0" stroke-width="1" stroke-opacity="0.2"/>
+  <circle cx="100" cy="180" r="5" fill="#2aafbe" fill-opacity="0.1" stroke="#2aafbe" stroke-width="1" stroke-opacity="0.15"/>
+  <circle cx="500" cy="180" r="5" fill="#2aafbe" fill-opacity="0.1" stroke="#2aafbe" stroke-width="1" stroke-opacity="0.15"/>
+  <line x1="120" y1="80" x2="240" y2="65" stroke="#5ad7f0" stroke-width="0.5" opacity="0.1"/>
+  <line x1="480" y1="80" x2="360" y2="65" stroke="#5ad7f0" stroke-width="0.5" opacity="0.1"/>
+  <!-- Text -->
+  <text x="300" y="268" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#5ad7f0" opacity="0.6" letter-spacing="3">HEALTHY FRIENDSHIP NETWORKS</text>
+</svg>

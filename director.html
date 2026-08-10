@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laura E. Barnes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Open+Sans:wght@300;400;600&family=Roboto+Slab:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+<style>
+/* ============ RESET & BASE ============ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: #515151;
+  background: #f2f2f2;
+}
+
+a { color: #1b6f8f; text-decoration: underline; }
+a:hover { color: #2aafbe; text-decoration: underline; }
+
+img { max-width: 100%; display: block; }
+
+h1, h2, h3 { color: #313131; }
+h1 { font-size: 2rem; line-height: 1.5; }
+h2 { font-size: 1.3rem; padding-bottom: 8px; border-bottom: 1px solid #ccc; margin-bottom: 16px; }
+
+p { margin-bottom: 15px; }
+
+/* ============ LAYOUT ============ */
+.site-shell {
+  max-width: 1100px;
+  margin: 22px auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.12);
+  padding: 0 0 2rem;
+  overflow: hidden;
+}
+
+/* ============ NAVBAR ============ */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  border-radius: 12px 12px 0 0;
+}
+
+.navbar-brand {
+  font-size: 1.85rem;
+  font-weight: 500;
+  color: #313131;
+  text-decoration: none;
+}
+
+.navbar-brand:hover { color: #1b6f8f; text-decoration: none; }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+}
+
+.nav-links a {
+  padding: 8px 16px;
+  font-size: 1.05rem;
+  color: #515151;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.navbar-brand { text-decoration: none; }
+.navbar-brand:hover { text-decoration: none; }
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #1b6f8f;
+  background: rgba(42,175,190,0.06);
+  text-decoration: none;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #515151;
+  border-radius: 2px;
+}
+
+/* ============ CONTENT ============ */
+.content {
+  padding: 28px 32px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 36px;
+  margin-bottom: 32px;
+}
+
+/* ============ PROFILE CARD ============ */
+.profile-card {
+  border: 1px solid #e8e8e8;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.profile-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.profile-card-body {
+  padding: 16px 20px;
+  text-align: center;
+}
+
+.profile-card-body .card-title {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #515151;
+  margin-bottom: 6px;
+  line-height: 1.45;
+}
+
+.profile-card-body .card-affiliation {
+  font-size: 0.88rem;
+  color: #999;
+  margin-bottom: 4px;
+}
+
+.profile-card-body .card-affiliation a {
+  color: #1b6f8f;
+}
+
+/* Social icons */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px 0 4px;
+}
+
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  font-size: 1.2em;
+  color: #444;
+  border-radius: 50%;
+  transition: color 0.3s, background 0.3s;
+  text-decoration: none;
+}
+
+.social-icons a:hover { text-decoration: none; }
+.social-icons a.icon-email:hover { color: #1b6f8f; background: rgba(27,111,143,0.08); }
+.social-icons a.icon-github:hover { color: #343434; background: rgba(52,52,52,0.08); }
+.social-icons a.icon-scholar:hover { color: #4285F4; background: rgba(66,133,244,0.08); }
+.social-icons a.icon-uva:hover { color: #e57200; background: rgba(229,114,0,0.08); }
+.social-icons a.icon-lab:hover { color: #2aafbe; background: rgba(42,175,190,0.08); }
+
+/* ============ BIO TEXT ============ */
+.bio { padding-top: 8px; }
+.bio p { font-size: 1.08rem; line-height: 1.75; }
+
+/* ============ TEACHING ============ */
+.teaching-list { list-style: none; }
+.teaching-list li {
+  padding: 6px 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+.course-code { font-weight: 700; color: #313131; }
+.course-name { color: #515151; }
+.course-semesters { font-size: 0.82rem; color: #999; }
+.course-semesters a { color: #1b6f8f; font-size: 0.82rem; }
+
+.prev-courses {
+  margin-top: 14px;
+  font-size: 0.82rem;
+  color: #999;
+  line-height: 1.65;
+}
+
+/* ============ NEWS ============ */
+.course-list { list-style: none; }
+.course-list li {
+  padding: 8px 0;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  border-bottom: 1px solid #f5f5f5;
+}
+.course-list li:last-child { border-bottom: none; }
+
+.news-list { list-style: none; }
+.news-list li {
+  padding: 8px 0;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  border-bottom: 1px solid #f5f5f5;
+}
+.news-list li:last-child { border-bottom: none; }
+
+.news-list i.fa-newspaper {
+  color: #1b6f8f;
+  margin-right: 8px;
+  font-size: 0.82rem;
+}
+
+.news-date {
+  font-weight: 700;
+  color: #313131;
+  margin-right: 4px;
+}
+
+.news-more {
+  margin-top: 10px;
+  font-size: 0.92rem;
+}
+
+/* ============ FOOTER ============ */
+.site-footer {
+  padding: 20px 32px;
+  font-size: 0.78rem;
+  color: #595959;
+  font-style: italic;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+.site-footer a { color: #111; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+  .site-shell {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .navbar {
+    border-radius: 0;
+    padding: 14px 20px;
+  }
+
+  .navbar-brand { font-size: 1.5rem; }
+
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 8px 0;
+    gap: 0;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  }
+  .nav-links.open a { padding: 12px 24px; border-radius: 0; }
+
+  .content { padding: 20px; }
+  .row { grid-template-columns: 1fr; gap: 24px; }
+
+  .profile-card {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 9999;
+  padding: 12px 24px;
+  background: #313131;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:focus-visible {
+  outline: 3px solid #1b6f8f;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<div class="site-shell">
+
+  <!-- NAVBAR -->
+  <nav class="navbar" aria-label="Director page navigation">
+    <a class="navbar-brand" href="./director.html">Laura E. Barnes</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="./director.html" class="active">Home</a></li>
+      <li><a href="https://drive.google.com/file/d/1OEfYeQE3o3X_Dt509wh1vXONVSq0O6ee/view?usp=sharing" target="_blank" rel="noopener">CV<span class="sr-only"> (opens in new tab)</span></a></li>
+      <li><a href="./director-news.html">News</a></li>
+      <li><a href="./index.html" target="_blank">S<sup>2</sup>He Lab<span class="sr-only"> (opens in new tab)</span></a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- CONTENT -->
+  <main class="content" id="main-content">
+
+    <!-- ROW 1: Photo + Bio -->
+    <div class="row">
+      <div>
+        <div class="profile-card">
+          <img src="./assets/people/laura_barnes-1.jpg" alt="Laura E. Barnes">
+          <div class="profile-card-body">
+            <div class="card-title">Lawrence R. Quarles Professor of Engineering and Applied Science</div>
+            <div class="card-affiliation"><a href="https://engineering.virginia.edu/departments/systems-and-information-engineering" target="_blank" rel="noopener">Dept. of Systems &amp; Information Engineering<span class="sr-only"> (opens in new tab)</span></a></div>
+            <div class="card-affiliation"><a href="https://engineering.virginia.edu/labs-groups/link-lab" target="_blank" rel="noopener">Associate Director, Link Lab<span class="sr-only"> (opens in new tab)</span></a></div>
+            <div class="card-affiliation"><a href="https://www.virginia.edu/" target="_blank" rel="noopener">University of Virginia<span class="sr-only"> (opens in new tab)</span></a></div>
+            <div class="social-icons">
+              <a href="mailto:lb3dp@virginia.edu" class="icon-email" title="Email" aria-label="Email"><i class="fas fa-envelope"></i></a>
+              <a href="https://github.com/BarnesLab" target="_blank" rel="noopener" class="icon-github" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="https://scholar.google.com/citations?user=h-Lr0bQAAAAJ" target="_blank" rel="noopener" class="icon-scholar" title="Google Scholar" aria-label="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+              <a href="https://engineering.virginia.edu/faculty/laura-barnes" target="_blank" rel="noopener" class="icon-uva" title="UVA Profile" aria-label="UVA Profile"><i class="fas fa-university"></i></a>
+              <a href="./index.html" class="icon-lab" title="S2He Lab" aria-label="S2He Lab"><i class="fas fa-flask"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bio">
+        <p>I am the Lawrence R. Quarles Professor of Engineering and Applied Science and a Professor in the <a href="https://engineering.virginia.edu/departments/systems-and-information-engineering" target="_blank" rel="noopener">Department of Systems and Information Engineering<span class="sr-only"> (opens in new tab)</span></a> at the <a href="https://www.virginia.edu/" target="_blank" rel="noopener">University of Virginia<span class="sr-only"> (opens in new tab)</span></a>. I am Associate Director of the <a href="https://engineering.virginia.edu/labs-groups/link-lab" target="_blank" rel="noopener">Link Lab<span class="sr-only"> (opens in new tab)</span></a> and direct the <a href="./index.html">Sensing Systems for Health (S<sup>2</sup>He) Lab</a>.</p>
+
+        <p>My research group creates mobile, wearable, and AI systems that understand human behavior and health in everyday life. We develop computational methods that combine multimodal sensing, machine learning, and AI to measure behavior and health outside the clinic and to build personalized, context-aware systems that can support people when and where they need it.</p>
+
+        <p>Our work spans digital health, behavioral interventions, and patient-clinician communication, with a focus on moving advances in sensing and AI from methodological development to applications that support health and well-being. I work closely with collaborators across engineering, behavioral science, medicine, and nursing to design and evaluate these technologies.</p>
+      </div>
+    </div>
+
+    <!-- ROW 2: Teaching + News -->
+    <div class="row">
+      <div>
+        <h2>Selected Courses</h2>
+
+        <ul class="course-list">
+          <li>Computational Methods for AI Systems</li>
+          <li>Statistical Modeling I</li>
+          <li>Machine Learning</li>
+          <li>Mobile Sensing and Health</li>
+          <li>Agent-Based Modeling &amp; Simulation</li>
+          <li>Senior Design Capstone</li>
+          <li>Cooperative Autonomous Systems</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>News</h2>
+        <ul class="news-list">
+      <li><i class="far fa-newspaper"></i><span class="news-date">Summer 2026</span> The lab hosted two students through the <a href="https://engineering.virginia.edu/department/biomedical-engineering/research/systems-biology-and-biomedical-data-science/systems-bioengineering-reu" target="_blank" rel="noopener">NSF Systems and Bioengineering Research Experiences for Undergraduates (REU) program<span class="sr-only"> (opens in new tab)</span></a>.</li>
+      <li><i class="far fa-newspaper"></i><span class="news-date">Summer 2026</span> <a href="https://www.linkedin.com/in/freya-nardelli/" target="_blank" rel="noopener">Freya Nardelli<span class="sr-only"> (opens in new tab)</span></a> wins 2nd place in the poster competition (<a href="https://www.linkedin.com/feed/update/urn:li:activity:7490021160059838465/" target="_blank" rel="noopener">photos<span class="sr-only"> (opens in new tab)</span></a>).</li>
+          <li><i class="far fa-newspaper"></i><span class="news-date">Spring 2026</span> <a href="https://ryanwang.cc/" target="_blank" rel="noopener">Zhiyuan Wang<span class="sr-only"> (opens in new tab)</span></a> successfully defends his PhD dissertation. Congrats Dr. Wang!</li>
+          <li><i class="far fa-newspaper"></i><span class="news-date">Mar 2026</span> Zachary King joins the lab as a Postdoctoral Fellow.</li>
+          <li><i class="far fa-newspaper"></i><span class="news-date">Nov 2025</span> <a href="https://sites.google.com/view/indrajeetghosh/" target="_blank" rel="noopener">Indrajeet Ghosh<span class="sr-only"> (opens in new tab)</span></a> joins the lab as a Postdoctoral Fellow.</li>
+          <li><i class="far fa-newspaper"></i><span class="news-date">Oct 2025</span> Invited Speaker at IEEE Biomedical and Health Informatics Conference &mdash; Workshop on Digital Health Technologies and AI.</li>
+          <li><i class="far fa-newspaper"></i><span class="news-date">Oct 2025</span> Featured Speaker at NSF Smart Health Frontiers: Combating Cancer with Advanced Technologies.</li>
+          <li><i class="far fa-newspaper"></i><span class="news-date">Fall 2025</span> <a href="https://www.linkedin.com/in/ruckermark/" target="_blank" rel="noopener">Mark Rucker<span class="sr-only"> (opens in new tab)</span></a> successfully defends his PhD dissertation. Congrats Dr. Rucker!</li>
+          <li><i class="far fa-newspaper"></i><span class="news-date">Jun 2025</span> Invited Speaker at South China Normal University &mdash; Aberdeen Institute of Data Science and AI.</li>
+          <li><i class="far fa-newspaper"></i><span class="news-date">Jun 2025</span> IEEE SmartComp Research Tutorial: "Deploying smart sensors for human subjects" with M. Rucker and <a href="https://sites.google.com/view/sabbir-eub" target="_blank" rel="noopener">Md Sabbir Ahmed<span class="sr-only"> (opens in new tab)</span></a>.</li>
+          <li><i class="far fa-newspaper"></i><span class="news-date">2025</span> New paper in <em>npj Health Systems</em>: Stakeholder-centric participation in large language models enhanced health systems.</li>
+          <li><i class="far fa-newspaper"></i><span class="news-date">2025</span> New paper in <em>IEEE Trans. Affective Computing</em>: Wearable sensor-based multimodal physiological responses of socially anxious individuals.</li>
+          <li><i class="far fa-newspaper"></i><span class="news-date">2024</span> Received UVA Research Achievement Award.</li>
+        </ul>
+        <div class="news-more"><a href="./director-news.html">See more news...</a></div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    &copy; 2026 Laura E. Barnes. University of Virginia School of Engineering and Applied Science.<br><span style="font-size: 0.78rem;">This site meets WCAG 2.1 Level AA standards. <a href="https://wave.webaim.org" target="_blank" rel="noopener" style="color: #595959; text-decoration: underline;">Verify with WAVE<span class="sr-only"> (opens in new tab)</span></a></span>
+  </footer>
+
+</div>
+
+<script>
+document.getElementById('navToggle').addEventListener('click', () => {
+  const navLinks = document.getElementById('navLinks');
+  const navToggle = document.getElementById('navToggle');
+  navLinks.classList.toggle('open');
+  const expanded = navLinks.classList.contains('open');
+  navToggle.setAttribute('aria-expanded', expanded);
+});
+</script>
+
+</body>
+</html>

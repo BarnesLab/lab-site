@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./shared.css">
+<title>S&sup2;He Lab | Publications</title>
+
+
+<style>
+.hero {
+  padding: 122px 0 26px;
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.4rem, 1.2rem + 1vw, 1.8rem);
+  color: var(--ink);
+  line-height: 1.14;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  max-width: 900px;
+  color: var(--ink-2);
+}
+
+.filter-wrap {
+  background: rgba(255,255,255,0.97);
+  border-bottom: 1px solid var(--line);
+}
+
+.filter-bar {
+  padding: 18px 0 12px;
+  display: grid;
+  grid-template-columns: 1.8fr repeat(2, minmax(150px, 1fr)) auto;
+  gap: 12px;
+  align-items: end;
+}
+
+.field label {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.field input {
+  width: 100%;
+  height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0 12px;
+  font-size: 0.88rem;
+  color: var(--ink);
+  background: var(--white);
+}
+
+.field input:focus {
+  outline: 2px solid var(--teal);
+  outline-offset: 1px;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(42, 175, 190, 0.16);
+}
+
+.btn-clear {
+  height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0 14px;
+  background: var(--white);
+  color: var(--ink-2);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-clear:hover {
+  border-color: var(--teal);
+  color: var(--teal-dark);
+}
+
+.checkbox-field {
+  height: 38px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0 10px;
+  background: var(--white);
+}
+
+.checkbox-field label {
+  margin: 0;
+  font-size: 0.82rem;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--ink-2);
+  font-weight: 700;
+}
+
+.notice {
+  margin: 12px 0 8px;
+  border-left: 4px solid var(--teal);
+  border-radius: 10px;
+  background: rgba(42, 175, 190, 0.08);
+  padding: 12px;
+  color: var(--ink-2);
+  font-size: 0.9rem;
+}
+
+.scholar-link {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.topic-strip {
+  padding: 0 0 16px;
+}
+
+.topic-label {
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.topic-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.topic-pill {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: var(--white);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.topic-pill:hover {
+  border-color: rgba(42,175,190,0.4);
+  transform: translateY(-1px);
+}
+
+.topic-pill.active {
+  color: var(--white);
+  border-color: transparent;
+  box-shadow: 0 8px 18px rgba(18, 59, 102, 0.15);
+}
+
+.topic-pill.wearable-sensing.active { background: linear-gradient(135deg, #d97706, #fbbf24); }
+.topic-pill.nlp-audio.active { background: linear-gradient(135deg, #7c3aed, #a78bfa); }
+.topic-pill.machine-learning.active { background: linear-gradient(135deg, #6d28d9, #8b5cf6); }
+.topic-pill.clinical-ai.active { background: linear-gradient(135deg, #0ea5a6, #14b8a6); }
+.topic-pill.hci-ubiquitous.active { background: linear-gradient(135deg, #2563eb, #38bdf8); }
+.topic-pill.mental-health.active { background: linear-gradient(135deg, #e11d48, #fb7185); }
+.topic-pill.physical-health.active { background: linear-gradient(135deg, #059669, #34d399); }
+.topic-pill.communication-clinical.active { background: linear-gradient(135deg, #ea580c, #fb923c); }
+.topic-pill.robotics.active { background: linear-gradient(135deg, #475569, #94a3b8); }
+
+.results-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin: 22px 0 14px;
+}
+
+.count {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.results {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding-bottom: 70px;
+}
+
+.pub-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 2px 0 rgba(18, 59, 102, 0.02);
+  padding: 16px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+}
+
+.pub-year {
+  min-width: 52px;
+  height: 28px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 400;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pub-title {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 3px;
+  line-height: 1.5;
+}
+
+.pub-title a { color: inherit; }
+
+.pub-meta {
+  font-size: 0.84rem;
+  font-weight: 400;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 2px;
+}
+
+.pub-authors {
+  font-size: 0.84rem;
+  font-weight: 400;
+  color: var(--ink-2);
+}
+
+.pub-topic {
+  display: inline-flex;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+
+.pub-topics {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pub-topic.wearable-sensing { color: #b45309; border-color: rgba(217,119,6,0.35); background: rgba(245,158,11,0.1); }
+.pub-topic.nlp-audio { color: #6d28d9; border-color: rgba(124,58,237,0.34); background: rgba(139,92,246,0.08); }
+.pub-topic.machine-learning { color: #5b21b6; border-color: rgba(109,40,217,0.34); background: rgba(109,40,217,0.08); }
+.pub-topic.clinical-ai { color: #0f766e; border-color: rgba(14,165,166,0.35); background: rgba(20,184,166,0.08); }
+.pub-topic.hci-ubiquitous { color: #1d4ed8; border-color: rgba(37,99,235,0.34); background: rgba(59,130,246,0.08); }
+.pub-topic.mental-health { color: #be123c; border-color: rgba(225,29,72,0.35); background: rgba(244,63,94,0.08); }
+.pub-topic.physical-health { color: #047857; border-color: rgba(5,150,105,0.35); background: rgba(5,150,105,0.08); }
+.pub-topic.communication-clinical { color: #c2410c; border-color: rgba(234,88,12,0.35); background: rgba(234,88,12,0.08); }
+.pub-topic.robotics { color: #475569; border-color: rgba(71,85,105,0.35); background: rgba(71,85,105,0.08); }
+.pub-topic.default {
+  color: var(--teal-dark);
+  border-color: rgba(42,175,190,0.24);
+  background: rgba(42,175,190,0.08);
+}
+
+.empty {
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  padding: 28px;
+  text-align: center;
+  color: var(--muted);
+}
+
+@media (max-width: 1024px) {
+  .filter-bar { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .filter-bar { grid-template-columns: 1fr; }
+  .pub-card { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav class="navbar" aria-label="Main">
+  <div class="container">
+    <a href="./index.html" class="nav-brand" aria-label="S2He home">
+      <span class="nav-brand-logo"><img src="./logo.png" alt="S2He Lab logo"></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./director.html" target="_blank" rel="noopener">Director<span class="sr-only"> (opens in new tab)</span></a></li>
+      <li><a href="./people.html">People</a></li>
+      <li><a href="./publications.html" class="active">Publications</a></li>
+      <li><a href="./projects.html">Projects</a></li>
+      <li><a href="./join-us.html">Join Us</a></li>
+      <li><a href="https://github.com/BarnesLab" target="_blank" rel="noopener">GitHub<span class="sr-only"> (opens in new tab)</span></a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">S<sup>2</sup>He Lab Knowledge Base</div>
+    <h1>All Publications</h1>
+    <div class="notice">
+      <strong>Copyright notice:</strong> Permission to make digital/hard copy of all or part of the following publications and technical reports for personal or classroom use is granted without fee provided that copies are not made or distributed for profit or commercial advantage. These publications are covered by copyright of the authors and publishing agencies.
+    </div>
+    <p class="scholar-link">See the full publication list at <a href="https://scholar.google.com/citations?user=h-Lr0bQAAAAJ&hl=en" target="_blank" rel="noopener">Laura Barnes Google Scholar<span class="sr-only"> (opens in new tab)</span></a>.</p>
+  </div>
+</header>
+
+<section class="filter-wrap">
+  <div class="container">
+    <form class="filter-bar" id="filterForm" onsubmit="return false;">
+      <div class="field">
+        <label for="pubSearch">Search</label>
+        <input id="pubSearch" type="text" placeholder="Title, venue, keywords, citation text...">
+      </div>
+      <div class="field">
+        <label for="yearFilter">Year</label>
+        <input id="yearFilter" type="text" list="yearOptions" placeholder="e.g. 2024">
+        <datalist id="yearOptions"></datalist>
+      </div>
+      <div class="field">
+        <label for="authorFilter">Author</label>
+        <input id="authorFilter" type="text" list="authorOptions" placeholder="e.g. Laura E Barnes">
+        <datalist id="authorOptions"></datalist>
+      </div>
+      <button class="btn-clear" type="button" id="clearBtn">Clear</button>
+    </form>
+    <div class="topic-strip">
+      <div class="topic-label">Topic Filters</div>
+      <div class="topic-pills" id="topicPills"></div>
+    </div>
+  </div>
+</section>
+
+<main id="main-content" class="container">
+  <div class="results-top">
+    <div class="count" id="resultCount" aria-live="polite"></div>
+  </div>
+  <section class="results" id="results" aria-live="polite"></section>
+</main>
+
+<script src="./publications-data.js"></script>
+<noscript>
+  <div class="notice" style="margin: 24px;">
+    <strong>JavaScript required:</strong> This page requires JavaScript to display and filter publications. Please enable JavaScript in your browser, or visit <a href="https://scholar.google.com/citations?user=h-Lr0bQAAAAJ&hl=en">Laura Barnes Google Scholar</a> for the full publication list.
+  </div>
+</noscript>
+<script>
+function isScholarlyPublication(item) {
+  const title = String(item?.title || '').toLowerCase();
+  return !/welcome message|foreword|editorial|preface/.test(title);
+}
+
+const data = (window.S2HE_PUBLICATIONS || []).filter(item => item && item.title && item.year && isScholarlyPublication(item));
+
+const searchInput = document.getElementById('pubSearch');
+const yearInput = document.getElementById('yearFilter');
+const authorInput = document.getElementById('authorFilter');
+const clearBtn = document.getElementById('clearBtn');
+const resultsEl = document.getElementById('results');
+const countEl = document.getElementById('resultCount');
+const topicPillsEl = document.getElementById('topicPills');
+
+const yearOptions = document.getElementById('yearOptions');
+const authorOptions = document.getElementById('authorOptions');
+
+function uniqueSorted(values, numeric = false) {
+  const arr = Array.from(new Set(values.filter(Boolean)));
+  if (numeric) return arr.sort((a, b) => Number(b) - Number(a));
+  return arr.sort((a, b) => String(a).localeCompare(String(b)));
+}
+
+function buildDatalist(el, values) {
+  el.innerHTML = values.map(v => `<option value="${String(v).replace(/"/g, '&quot;')}"></option>`).join('');
+}
+
+function normalize(v) {
+  return String(v || '').toLowerCase().trim();
+}
+
+const TOPIC_CATALOG = [
+  'wearable sensing',
+  'nlp & audio',
+  'machine learning',
+  'clinical ai',
+  'hci & ubiquitous',
+  'mental health',
+  'physical health',
+  'communication & clinical',
+  'robotics'
+];
+
+const TOPIC_LABELS = {
+  'wearable sensing': 'Wearable Sensing',
+  'nlp & audio': 'NLP & Audio',
+  'machine learning': 'Machine Learning',
+  'clinical ai': 'Clinical AI',
+  'hci & ubiquitous': 'HCI & Ubiquitous',
+  'mental health': 'Mental Health',
+  'physical health': 'Physical Health',
+  'communication & clinical': 'Communication & Clinical',
+  'robotics': 'Robotics'
+};
+
+const TOPIC_CLASSES = {
+  'wearable sensing': 'wearable-sensing',
+  'nlp & audio': 'nlp-audio',
+  'machine learning': 'machine-learning',
+  'clinical ai': 'clinical-ai',
+  'hci & ubiquitous': 'hci-ubiquitous',
+  'mental health': 'mental-health',
+  'physical health': 'physical-health',
+  'communication & clinical': 'communication-clinical',
+  'robotics': 'robotics'
+};
+
+function canonicalTopic(topic) {
+  const t = normalize(topic);
+  if (!t) return 'machine learning';
+  if (TOPIC_CATALOG.includes(t)) return t;
+  if (t.includes('wearable') || t.includes('mobile sensing') || t.includes('multimodal')) return 'wearable sensing';
+  if (t.includes('nlp') || t.includes('audio') || t.includes('language') || t.includes('text')) return 'nlp & audio';
+  if (t.includes('machine learning') || t.includes('method') || t.includes('ml') || t.includes('deep learning')) return 'machine learning';
+  if (t.includes('clinical ai') || t.includes('ehr') || t.includes('health informatics')) return 'clinical ai';
+  if (t.includes('hci') || t.includes('ubiquit')) return 'hci & ubiquitous';
+  if (t.includes('mental') || t.includes('anxiety') || t.includes('depression')) return 'mental health';
+  if (t.includes('physical') || t.includes('motor') || t.includes('cancer')) return 'physical health';
+  if (t.includes('communication') || t.includes('conversation')) return 'communication & clinical';
+  if (t.includes('robot') || t.includes('control theory') || t.includes('swarm') || t.includes('formation') || t.includes('multi-agent') || t.includes('autonomous') || t.includes('mapping') || t.includes('potential field')) return 'robotics';
+  return 'machine learning';
+}
+
+function extractTopics(pub) {
+  if (Array.isArray(pub.topics) && pub.topics.length) {
+    return uniqueSorted(pub.topics.map(canonicalTopic));
+  }
+  const raw = Array.isArray(pub.topic) ? pub.topic : [pub.topic || 'machine learning'];
+  const expanded = [];
+  raw.forEach(item => {
+    const text = String(item || '').trim();
+    if (!text) return;
+    if (text.includes('|')) expanded.push(...text.split('|'));
+    else if (text.includes(';')) expanded.push(...text.split(';'));
+    else expanded.push(text);
+  });
+  const normalized = uniqueSorted(expanded.map(canonicalTopic));
+  return normalized.length ? normalized : ['machine learning'];
+}
+
+data.forEach(pub => {
+  pub.topicsList = extractTopics(pub);
+});
+
+const years = uniqueSorted(data.map(d => d.year), true);
+const authors = uniqueSorted(data.flatMap(d => d.authorsList || []));
+const availableTopics = TOPIC_CATALOG.filter(topic => data.some(pub => pub.topicsList.includes(topic)));
+const selectedTopics = new Set();
+
+buildDatalist(yearOptions, years);
+buildDatalist(authorOptions, authors);
+
+function topicLabel(topic) {
+  return TOPIC_LABELS[topic] || topic.replace(/\b\w/g, c => c.toUpperCase());
+}
+
+function topicClass(topic) {
+  return TOPIC_CLASSES[topic] || 'default';
+}
+
+function renderTopicPills() {
+  topicPillsEl.innerHTML = availableTopics.map(topic => {
+    const active = selectedTopics.has(topic) ? ' active' : '';
+    return `<button type="button" class="topic-pill ${topicClass(topic)}${active}" data-topic="${topic}" aria-pressed="${selectedTopics.has(topic)}">${topicLabel(topic)}</button>`;
+  }).join('');
+}
+
+function matches(pub) {
+  const q = normalize(searchInput.value);
+  const y = normalize(yearInput.value);
+  const a = normalize(authorInput.value);
+
+  const hay = normalize([pub.title, pub.venue, pub.authors, pub.citation].join(' '));
+  const authorsText = normalize(pub.authors + ' ' + (pub.authorsList || []).join(' '));
+
+  if (q && !hay.includes(q)) return false;
+  if (y && !String(pub.year).includes(y)) return false;
+  if (a && !authorsText.includes(a)) return false;
+  if (selectedTopics.size && !pub.topicsList.some(topic => selectedTopics.has(topic))) return false;
+  return true;
+}
+
+function render(items) {
+  countEl.textContent = `${items.length} publications shown`;
+  if (!items.length) {
+    resultsEl.innerHTML = '<div class="empty">No results. Try a broader keyword or clear filters.</div>';
+    return;
+  }
+
+  resultsEl.innerHTML = items.map(pub => {
+    const url = pub.url || '#';
+    const safeTitle = pub.title || '';
+    const safeVenue = pub.venue || 'Venue not specified';
+    const safeAuthors = pub.authors || 'Authors not specified';
+    const topicBadges = (pub.topicsList || ['machine learning']).map(topic => `<span class="pub-topic ${topicClass(topic)}">${topicLabel(topic)}</span>`).join('');
+
+    return `
+      <article class="pub-card">
+        <div class="pub-year">${pub.year}</div>
+        <div>
+          <h2 class="pub-title"><a href="${url}" target="_blank" rel="noopener">${safeTitle}</a></h2>
+          <div class="pub-meta">${safeVenue}</div>
+          <div class="pub-authors">${safeAuthors}</div>
+          ${topicBadges ? `<div class="pub-topics">${topicBadges}</div>` : ''}
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
+function refresh() {
+  const filtered = data.filter(matches).sort((a, b) => (b.year || 0) - (a.year || 0));
+  render(filtered);
+}
+
+[searchInput, yearInput, authorInput].forEach(el => {
+  el.addEventListener('input', refresh);
+});
+
+topicPillsEl.addEventListener('click', (event) => {
+  const btn = event.target.closest('button[data-topic]');
+  if (!btn) return;
+  const topic = btn.getAttribute('data-topic');
+  if (selectedTopics.has(topic)) selectedTopics.delete(topic);
+  else selectedTopics.add(topic);
+  renderTopicPills();
+  refresh();
+});
+
+clearBtn.addEventListener('click', () => {
+  searchInput.value = '';
+  yearInput.value = '';
+  authorInput.value = '';
+  selectedTopics.clear();
+  renderTopicPills();
+  refresh();
+});
+
+renderTopicPills();
+refresh();
+</script>
+
+<script>
+document.getElementById('navToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+  const btn = document.getElementById('navToggle');
+  const expanded = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', String(!expanded));
+});
+</script>
+
+<footer class="footer">
+  <div class="container">S<sup>2</sup>He Lab &middot; University of Virginia<br><span style="font-size: 0.78rem;">This site meets WCAG 2.1 Level AA standards. <a href="https://wave.webaim.org" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Verify with WAVE<span class="sr-only"> (opens in new tab)</span></a></span></div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1078 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./shared.css" />
+    <title>S&sup2;He Lab | People</title>
+
+    <style>
+      .hero {
+        padding: 122px 0 28px;
+      }
+
+      .eyebrow {
+        font-size: 0.78rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 800;
+        color: var(--teal-dark);
+        margin-bottom: 10px;
+      }
+
+      h1 {
+        font-family: "Inter", sans-serif;
+        color: var(--ink);
+        font-size: clamp(1.4rem, 1.2rem + 1vw, 1.8rem);
+        line-height: 1.14;
+        margin-bottom: 10px;
+      }
+
+      .hero p {
+        max-width: 900px;
+        color: var(--ink-2);
+      }
+
+      .section-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 6px 0 30px;
+      }
+
+      .section-nav a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--ink-2);
+        font-size: 0.85rem;
+        font-weight: 700;
+        transition:
+          transform 0.22s ease,
+          border-color 0.22s ease,
+          color 0.22s ease;
+      }
+
+      .section-nav a:hover {
+        transform: translateY(-1px);
+        border-color: rgba(42, 175, 190, 0.32);
+        color: var(--teal-dark);
+      }
+
+      .notice {
+        margin-top: 10px;
+        border-left: 4px solid var(--teal);
+        border-radius: 10px;
+        background: rgba(42, 175, 190, 0.08);
+        padding: 10px 12px;
+        font-size: 0.9rem;
+      }
+
+      .section-title {
+        font-family: "Inter", sans-serif;
+        color: var(--ink);
+        font-size: 1.05rem;
+        margin: 14px 0 12px;
+      }
+
+      .director-section {
+        margin-bottom: 38px;
+      }
+
+      .director-card {
+        border: 1px solid var(--line);
+        border-radius: calc(var(--radius) + 4px);
+        background: linear-gradient(
+          135deg,
+          rgba(42, 175, 190, 0.06) 0%,
+          rgba(90, 215, 240, 0.08) 100%
+        );
+        box-shadow: var(--shadow);
+        padding: 24px;
+        display: grid;
+        grid-template-columns: 152px minmax(0, 1fr);
+        gap: 24px;
+        align-items: start;
+      }
+
+      .director-photo {
+        width: 152px;
+        height: 152px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 4px solid rgba(255, 255, 255, 0.9);
+        box-shadow: 0 14px 28px rgba(18, 59, 102, 0.14);
+      }
+
+      .director-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .director-kicker {
+        font-size: 0.8rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--teal-dark);
+        margin-bottom: 8px;
+      }
+
+      .director-name {
+        font-family: "Inter", sans-serif;
+        font-size: 1.2rem;
+        color: var(--ink);
+        margin-bottom: 8px;
+      }
+
+      .director-title-list {
+        list-style: none;
+        display: grid;
+        gap: 10px;
+        margin: 14px 0 16px;
+      }
+
+      .director-title-list li {
+        padding-top: 10px;
+        border-top: 1px solid rgba(216, 232, 243, 0.9);
+        color: var(--ink-2);
+        font-weight: 600;
+      }
+
+      .director-title-list li:first-child {
+        padding-top: 0;
+        border-top: none;
+      }
+
+      .director-summary {
+        color: var(--ink-2);
+        max-width: 70ch;
+      }
+
+      .director-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .director-actions a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(27, 111, 143, 0.18);
+        background: rgba(255, 255, 255, 0.88);
+        color: var(--teal-dark);
+        font-size: 0.88rem;
+        font-weight: 700;
+        transition:
+          transform 0.22s ease,
+          border-color 0.22s ease,
+          color 0.22s ease;
+      }
+
+      .director-actions a:hover {
+        transform: translateY(-1px);
+        border-color: rgba(42, 175, 190, 0.4);
+        color: var(--teal);
+      }
+
+      .team-category {
+        margin-bottom: 32px;
+      }
+
+      .team-category:last-child {
+        margin-bottom: 42px;
+      }
+
+      .team-category-title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .team-category-title .cat-bar {
+        width: 4px;
+        height: 22px;
+        border-radius: 2px;
+        background: var(--teal);
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        gap: 14px;
+      }
+
+      .team-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: linear-gradient(
+          135deg,
+          rgba(42, 175, 190, 0.04) 0%,
+          rgba(90, 215, 240, 0.06) 100%
+        );
+        padding: 22px 18px;
+        text-align: center;
+        transition: all 0.25s;
+      }
+
+      .team-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow);
+      }
+
+      .team-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin: 0 auto 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: var(--white);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .team-avatar.teal {
+        background: linear-gradient(135deg, var(--teal), var(--teal-light));
+      }
+      .team-avatar.coral {
+        background: linear-gradient(135deg, #2f7de1, #5b99ea);
+      }
+      .team-avatar.cyan {
+        background: linear-gradient(135deg, #06b6d4, #22d3ee);
+      }
+      .team-avatar.emerald {
+        background: linear-gradient(135deg, #059669, #34d399);
+      }
+      .team-avatar.violet {
+        background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      }
+      .team-avatar.rose {
+        background: linear-gradient(135deg, #e11d48, #fb7185);
+      }
+      .team-avatar.amber {
+        background: linear-gradient(135deg, #d97706, #fbbf24);
+      }
+      .team-avatar.sky {
+        background: linear-gradient(135deg, #0284c7, #38bdf8);
+      }
+
+      .team-avatar.photo {
+        padding: 3px;
+        background: #ffffff;
+        border: 1px solid rgba(27, 111, 143, 0.2);
+        box-shadow: 0 8px 20px rgba(18, 59, 102, 0.12);
+      }
+
+      .team-avatar.photo img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .team-name {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 3px;
+      }
+
+      .team-name a {
+        color: var(--teal-dark);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .team-name a:hover {
+        color: var(--teal);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      .team-role {
+        font-size: 0.82rem;
+        color: var(--ink-2);
+        font-weight: 600;
+      }
+
+      .team-years {
+        font-size: 0.78rem;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+
+      .team-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 28px;
+        padding: 0 10px;
+        margin-bottom: 10px;
+        border-radius: 999px;
+        background: rgba(42, 175, 190, 0.1);
+        color: var(--teal-dark);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .section-kicker {
+        font-size: 0.8rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--teal-dark);
+        margin-bottom: 8px;
+      }
+
+      .section-subtitle {
+        color: var(--muted);
+        margin-bottom: 22px;
+      }
+
+      .alumni-subsection {
+        margin-bottom: 42px;
+      }
+      .alumni-subsection:last-child {
+        margin-bottom: 70px;
+      }
+
+      .alumni-subsection-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 18px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .alumni-subsection-title .sub-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background: rgba(42, 175, 190, 0.12);
+        color: var(--teal);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .alumni-subsection-title .sub-icon svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .alumni-network {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 16px;
+        position: relative;
+      }
+
+      .alumni-network::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 24px;
+        right: 24px;
+        height: 1px;
+        background: repeating-linear-gradient(
+          90deg,
+          var(--line) 0,
+          var(--line) 8px,
+          transparent 8px,
+          transparent 16px
+        );
+        z-index: 0;
+      }
+
+      .alumni-network::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 24px;
+        bottom: 24px;
+        width: 1px;
+        background: repeating-linear-gradient(
+          180deg,
+          var(--line) 0,
+          var(--line) 8px,
+          transparent 8px,
+          transparent 16px
+        );
+        z-index: 0;
+      }
+
+      .alumni-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: linear-gradient(
+          135deg,
+          rgba(42, 175, 190, 0.04) 0%,
+          rgba(90, 215, 240, 0.06) 100%
+        );
+        padding: 18px;
+        position: relative;
+        z-index: 1;
+        transition: all 0.25s;
+      }
+
+      .alumni-card:hover {
+        border-color: rgba(42, 175, 190, 0.28);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow);
+      }
+
+      .alumni-card-top {
+        margin-bottom: 8px;
+      }
+
+      .alumni-card-info h3 {
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--ink);
+        line-height: 1.3;
+      }
+
+      .alumni-card-info h3 a {
+        color: var(--teal-dark);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .alumni-card-info h3 a:hover {
+        color: var(--teal);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      .alumni-grad-year {
+        font-size: 0.76rem;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .alumni-now {
+        font-size: 0.83rem;
+        color: var(--ink-2);
+        line-height: 1.5;
+        padding-top: 8px;
+        border-top: 1px solid #eef4f8;
+      }
+
+      .alumni-now strong {
+        color: var(--teal-dark);
+      }
+
+      @media (max-width: 980px) {
+        .team-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        .director-card {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .director-photo {
+          margin: 0 auto;
+        }
+        .director-summary {
+          max-width: none;
+        }
+        .director-actions {
+          justify-content: center;
+        }
+        .team-avatar {
+          width: 100px;
+          height: 100px;
+          font-size: 1rem;
+        }
+        .team-grid {
+          grid-template-columns: 1fr;
+        }
+        .alumni-network {
+          grid-template-columns: 1fr;
+        }
+        .alumni-network::before,
+        .alumni-network::after {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="navbar" aria-label="Main">
+      <div class="container">
+        <a href="./index.html" class="nav-brand" aria-label="S2He home">
+          <span class="nav-brand-logo"
+            ><img src="./logo.png" alt="S2He Lab logo"
+          /></span>
+        </a>
+        <ul class="nav-links" id="navLinks" role="list">
+          <li><a href="./index.html">Home</a></li>
+          <li>
+            <a href="./director.html" target="_blank" rel="noopener"
+              >Director<span class="sr-only"> (opens in new tab)</span></a
+            >
+          </li>
+          <li><a href="./people.html" class="active">People</a></li>
+          <li><a href="./publications.html">Publications</a></li>
+          <li><a href="./projects.html">Projects</a></li>
+          <li><a href="./join-us.html">Join Us</a></li>
+          <li>
+            <a
+              href="https://github.com/BarnesLab"
+              target="_blank"
+              rel="noopener"
+              >GitHub<span class="sr-only"> (opens in new tab)</span></a
+            >
+          </li>
+        </ul>
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="container">
+        <div class="eyebrow">S<sup>2</sup>He Lab Directory</div>
+        <h1>People</h1>
+      </div>
+    </header>
+
+    <main class="container" id="main-content">
+      <h2 class="section-title" id="current-members">Current Members</h2>
+
+      <section class="team-grid" id="currentMembersGrid">
+        <article class="team-card">
+          <div class="team-avatar photo teal">
+            <img src="./assets/people/sam-fang.jpg" alt="Sam Fang" />
+          </div>
+          <div class="team-badge">PhD Student</div>
+          <div class="team-name">
+            <a
+              href="https://www.linkedin.com/in/samuel-fang-295845227/"
+              target="_blank"
+              rel="noopener"
+              >Sam Fang<span class="sr-only"> (opens in new tab)</span></a
+            >
+          </div>
+          <div class="team-role">Ph.D. Student, Systems Engineering</div>
+          <div class="team-years">2026 &ndash; present</div>
+        </article>
+        <article class="team-card">
+          <div class="team-avatar photo coral">
+            <img src="./assets/people/zachary-king.jpg" alt="Zachary King" />
+          </div>
+          <div class="team-badge">Postdoc</div>
+          <div class="team-name">Zachary King</div>
+          <div class="team-role">Postdoctoral Fellow</div>
+          <div class="team-years">2026 &ndash; present</div>
+        </article>
+        <article class="team-card">
+          <div class="team-avatar photo emerald">
+            <img
+              src="./assets/people/indrajeet-ghosh.jpg"
+              alt="Indrajeet Ghosh"
+            />
+          </div>
+          <div class="team-badge">Postdoc</div>
+          <div class="team-name">
+            <a
+              href="https://sites.google.com/view/indrajeetghosh/"
+              target="_blank"
+              rel="noopener"
+              >Indrajeet Ghosh<span class="sr-only">
+                (opens in new tab)</span
+              ></a
+            >
+          </div>
+          <div class="team-role">Postdoctoral Fellow</div>
+          <div class="team-years">2025 &ndash; present</div>
+        </article>
+        <article class="team-card">
+          <div class="team-avatar photo cyan">
+            <img
+              src="./assets/people/Alejandro_IDPicture-1.png"
+              alt="Alejandro Vistorte Salgado"
+            />
+          </div>
+          <div class="team-badge">PhD Student</div>
+          <div class="team-name">
+            <a
+              href="https://sites.google.com/view/a2vs"
+              target="_blank"
+              rel="noopener"
+              >Alejandro Vistorte Salgado<span class="sr-only">
+                (opens in new tab)</span
+              ></a
+            >
+          </div>
+          <div class="team-role">Ph.D. Student, Systems Engineering</div>
+          <div class="team-years">2025 &ndash; present</div>
+        </article>
+        <article class="team-card">
+          <div class="team-avatar photo violet">
+            <img src="./assets/people/xinyu-profile.jpeg" alt="Xinyu Chen" />
+          </div>
+          <div class="team-badge">PhD Student</div>
+          <div class="team-name">
+            <a
+              href="https://www.linkedin.com/in/xinyu-chen-5a5220255/"
+              target="_blank"
+              rel="noopener"
+              >Xinyu Chen<span class="sr-only"> (opens in new tab)</span></a
+            >
+          </div>
+          <div class="team-role">Ph.D. Student, Systems Engineering</div>
+          <div class="team-years">2025 &ndash; present</div>
+        </article>
+        <article class="team-card">
+          <div class="team-avatar photo rose">
+            <img
+              src="./assets/people/Screen-Shot-2023-08-14-at-11.15.59-AM.png"
+              alt="Md Sabbir Ahmed"
+            />
+          </div>
+          <div class="team-badge">PhD Student</div>
+          <div class="team-name">
+            <a
+              href="https://sites.google.com/view/sabbir-eub"
+              target="_blank"
+              rel="noopener"
+              >Sabbir Ahmed<span class="sr-only"> (opens in new tab)</span></a
+            >
+          </div>
+          <div class="team-role">Ph.D. Student, Systems Engineering</div>
+          <div class="team-years">2023 &ndash; present</div>
+        </article>
+        <article class="team-card">
+          <div class="team-avatar photo amber">
+            <img
+              src="./assets/people/23UVA_Ariful_1074pp.jpg"
+              alt="Ariful Islam"
+            />
+          </div>
+          <div class="team-badge">PhD Student</div>
+          <div class="team-name">
+            <a
+              href="https://www.linkedin.com/in/arifulislam91/"
+              target="_blank"
+              rel="noopener"
+              >Ariful Islam<span class="sr-only"> (opens in new tab)</span></a
+            >
+          </div>
+          <div class="team-role">Ph.D. Student, Systems Engineering</div>
+          <div class="team-years">2024 &ndash; present</div>
+        </article>
+        <article class="team-card">
+          <div class="team-avatar photo sky">
+            <img src="./assets/people/Arafat.jpg" alt="Arafat Rahman" />
+          </div>
+          <div class="team-badge">PhD Student</div>
+          <div class="team-name">
+            <a
+              href="https://arafat245.github.io/"
+              target="_blank"
+              rel="noopener"
+              >Arafat Rahman<span class="sr-only"> (opens in new tab)</span></a
+            >
+          </div>
+          <div class="team-role">Ph.D. Student, Systems Engineering</div>
+          <div class="team-years">2022 &ndash; present</div>
+        </article>
+      </section>
+
+      <h2 class="section-title" id="past-members" style="margin-top: 56px">
+        Former Members
+      </h2>
+
+      <section class="alumni-subsection">
+        <div class="alumni-network">
+          <div class="alumni-card">
+            <div class="alumni-card-top">
+              <div class="alumni-card-info">
+                <h3>
+                  <a href="https://ryanwang.cc/" target="_blank" rel="noopener"
+                    >Zhiyuan Wang<span class="sr-only">
+                      (opens in new tab)</span
+                    ></a
+                  >
+                </h3>
+                <div class="alumni-grad-year">Spring 2026</div>
+              </div>
+            </div>
+            <div class="alumni-now">
+              <strong>Now:</strong> Research Scientist, Meta Reality Labs
+              Research
+            </div>
+          </div>
+          <div class="alumni-card">
+            <div class="alumni-card-top">
+              <div class="alumni-card-info">
+                <h3>
+                  <a
+                    href="https://www.linkedin.com/in/gutie2015/"
+                    target="_blank"
+                    rel="noopener"
+                    >Robert Gutierrez<span class="sr-only">
+                      (opens in new tab)</span
+                    ></a
+                  >
+                </h3>
+                <div class="alumni-grad-year">Summer 2022</div>
+              </div>
+            </div>
+            <div class="alumni-now">
+              <strong>Now:</strong> Major, United States Air Force
+            </div>
+          </div>
+          <div class="alumni-card">
+            <div class="alumni-card-top">
+              <div class="alumni-card-info">
+                <h3>
+                  <a
+                    href="https://www.linkedin.com/in/ruckermark/"
+                    target="_blank"
+                    rel="noopener"
+                    >Mark Rucker<span class="sr-only">
+                      (opens in new tab)</span
+                    ></a
+                  >
+                </h3>
+                <div class="alumni-grad-year">Fall 2025</div>
+              </div>
+            </div>
+            <div class="alumni-now">
+              <strong>Now:</strong> Director, Digital Technology Core,
+              University of Virginia Research Computing
+            </div>
+          </div>
+          <div class="alumni-card">
+            <div class="alumni-card-top">
+              <div class="alumni-card-info">
+                <h3>Shashwat Kumar</h3>
+                <div class="alumni-grad-year">Summer 2024</div>
+              </div>
+            </div>
+            <div class="alumni-now">
+              <strong>Now:</strong> Postdoctoral Fellow, Biomedical Engineering,
+              Johns Hopkins University
+            </div>
+          </div>
+          <div class="alumni-card">
+            <div class="alumni-card-top">
+              <div class="alumni-card-info">
+                <h3>
+                  <a
+                    href="https://www.linkedin.com/in/navreetkaurt/"
+                    target="_blank"
+                    rel="noopener"
+                    >Navreet Kaur<span class="sr-only">
+                      (opens in new tab)</span
+                    ></a
+                  >
+                </h3>
+                <div class="alumni-grad-year">Spring 2024</div>
+              </div>
+            </div>
+            <div class="alumni-now">
+              <strong>Now:</strong> Lead Data Scientist, Citi
+            </div>
+          </div>
+          <div class="alumni-card">
+            <div class="alumni-card-top">
+              <div class="alumni-card-info">
+                <h3>
+                  <a
+                    href="https://www.linkedin.com/in/annabaglione/"
+                    target="_blank"
+                    rel="noopener"
+                    >Anna (Baglione) Spears<span class="sr-only">
+                      (opens in new tab)</span
+                    ></a
+                  >
+                </h3>
+                <div class="alumni-grad-year">Spring 2023</div>
+              </div>
+            </div>
+            <div class="alumni-now">
+              <strong>Now:</strong> Senior Product Owner, Humana
+            </div>
+          </div>
+          <div class="alumni-card">
+            <div class="alumni-card-top">
+              <div class="alumni-card-info">
+                <h3>
+                  <a
+                    href="https://www.linkedin.com/in/sonia-baee/"
+                    target="_blank"
+                    rel="noopener"
+                    >Sonia Baee<span class="sr-only">
+                      (opens in new tab)</span
+                    ></a
+                  >
+                </h3>
+                <div class="alumni-grad-year">Summer 2022</div>
+              </div>
+            </div>
+            <div class="alumni-now">
+              <strong>Now:</strong> Machine Learning Engineering Manager, Apple
+            </div>
+          </div>
+          <div class="alumni-card">
+            <div class="alumni-card-top">
+              <div class="alumni-card-info">
+                <h3>
+                  <a
+                    href="https://www.linkedin.com/in/mawuloloameko12"
+                    target="_blank"
+                    rel="noopener"
+                    >Mawulolo Ameko<span class="sr-only">
+                      (opens in new tab)</span
+                    ></a
+                  >
+                </h3>
+                <div class="alumni-grad-year">Fall 2021</div>
+              </div>
+            </div>
+            <div class="alumni-now">
+              <strong>Now:</strong> Principal Consultant, Okema AI
+            </div>
+          </div>
+          <div class="alumni-card">
+            <div class="alumni-card-top">
+              <div class="alumni-card-info">
+                <h3>
+                  <a
+                    href="https://www.linkedin.com/in/lihua-cai-37a68834/"
+                    target="_blank"
+                    rel="noopener"
+                    >Lihua Cai<span class="sr-only">
+                      (opens in new tab)</span
+                    ></a
+                  >
+                </h3>
+                <div class="alumni-grad-year">Spring 2020</div>
+              </div>
+            </div>
+            <div class="alumni-now">
+              <strong>Now:</strong> Assistant Professor, South China Normal
+              University
+            </div>
+          </div>
+          <div class="alumni-card">
+            <div class="alumni-card-top">
+              <div class="alumni-card-info">
+                <h3>
+                  <a
+                    href="https://www.linkedin.com/in/kamran-kowsari-82a0454a/"
+                    target="_blank"
+                    rel="noopener"
+                    >Kamran Kowsari<span class="sr-only">
+                      (opens in new tab)</span
+                    ></a
+                  >
+                </h3>
+                <div class="alumni-grad-year">Spring 2020</div>
+              </div>
+            </div>
+            <div class="alumni-now">
+              <strong>Now:</strong> Senior Data Scientist, University of
+              California, Los Angeles Health
+            </div>
+          </div>
+          <div class="alumni-card">
+            <div class="alumni-card-top">
+              <div class="alumni-card-info">
+                <h3>
+                  <a
+                    href="https://www.linkedin.com/in/alicia-nobles/"
+                    target="_blank"
+                    rel="noopener"
+                    >Alicia Nobles<span class="sr-only">
+                      (opens in new tab)</span
+                    ></a
+                  >
+                </h3>
+                <div class="alumni-grad-year">Fall 2018</div>
+              </div>
+            </div>
+            <div class="alumni-now">
+              <strong>Now:</strong> Principal Data Scientist, Walmart Health
+            </div>
+          </div>
+          <div class="alumni-card">
+            <div class="alumni-card-top">
+              <div class="alumni-card-info">
+                <h3>
+                  <a
+                    href="https://www.linkedin.com/in/nicholas-joseph-napoli-phd-26238b24/"
+                    target="_blank"
+                    rel="noopener"
+                    >Nicholas Napoli<span class="sr-only">
+                      (opens in new tab)</span
+                    ></a
+                  >
+                </h3>
+                <div class="alumni-grad-year">Spring 2018</div>
+              </div>
+            </div>
+            <div class="alumni-now">
+              <strong>Now:</strong> Associate Professor, Department of
+              Electrical and Computer Engineering, University of Florida
+            </div>
+          </div>
+          <div class="alumni-card">
+            <div class="alumni-card-top">
+              <div class="alumni-card-info">
+                <h3>
+                  <a
+                    href="https://www.linkedin.com/in/jinghezhang/"
+                    target="_blank"
+                    rel="noopener"
+                    >Jinghe Zhang<span class="sr-only">
+                      (opens in new tab)</span
+                    ></a
+                  >
+                </h3>
+                <div class="alumni-grad-year">Fall 2017</div>
+              </div>
+            </div>
+            <div class="alumni-now">
+              <strong>Now:</strong> Machine Learning Engineer, Apple
+            </div>
+          </div>
+          <div class="alumni-card">
+            <div class="alumni-card-top">
+              <div class="alumni-card-info">
+                <h3>
+                  <a
+                    href="https://www.linkedin.com/in/loneharoon/"
+                    target="_blank"
+                    rel="noopener"
+                    >Haroon Rashid Lone<span class="sr-only">
+                      (opens in new tab)</span
+                    ></a
+                  >
+                </h3>
+                <div class="alumni-grad-year">2018 &ndash; 2020</div>
+              </div>
+            </div>
+            <div class="alumni-now">
+              <strong>Now:</strong> Assistant Professor, Indian Institute of
+              Science Education and Research Bhopal
+            </div>
+          </div>
+          <div class="alumni-card">
+            <div class="alumni-card-top">
+              <div class="alumni-card-info">
+                <h3>
+                  <a
+                    href="https://www.linkedin.com/in/mehdi-boukhechba-phd-06167270/"
+                    target="_blank"
+                    rel="noopener"
+                    >Mehdi Boukhechba<span class="sr-only">
+                      (opens in new tab)</span
+                    ></a
+                  >
+                </h3>
+                <div class="alumni-grad-year">2017 &ndash; 2019</div>
+              </div>
+            </div>
+            <div class="alumni-now">
+              <strong>Now:</strong> Senior Research Scientist, Johnson &amp;
+              Johnson
+            </div>
+          </div>
+
+          <div class="alumni-card">
+            <div class="alumni-card-top">
+              <div class="alumni-card-info">
+                <h3>
+                  <a
+                    href="https://www.linkedin.com/in/haoyixiong/"
+                    target="_blank"
+                    rel="noopener"
+                    >Haoyi Xiong<span class="sr-only">
+                      (opens in new tab)</span
+                    ></a
+                  >
+                </h3>
+                <div class="alumni-grad-year">2015 &ndash; 2016</div>
+              </div>
+            </div>
+            <div class="alumni-now">
+              <strong>Now:</strong> Principal Applied Scientist, Microsoft
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      document.getElementById("navToggle").addEventListener("click", () => {
+        document.getElementById("navLinks").classList.toggle("open");
+        document
+          .getElementById("navToggle")
+          .setAttribute(
+            "aria-expanded",
+            document.getElementById("navLinks").classList.contains("open"),
+          );
+      });
+    </script>
+
+    <footer class="footer">
+      <div class="container">
+        S<sup>2</sup>He Lab &middot; University of Virginia<br /><span
+          style="font-size: 0.78rem"
+          >This site meets WCAG 2.1 Level AA standards.
+          <a
+            href="https://wave.webaim.org"
+            target="_blank"
+            rel="noopener"
+            style="color: inherit; text-decoration: underline"
+            >Verify with WAVE<span class="sr-only"> (opens in new tab)</span></a
+          ></span
+        >
+      </div>
+    </footer>
+  </body>
+</html>
