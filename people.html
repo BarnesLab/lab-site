@@ -580,145 +580,30 @@
     <main class="container" id="main-content">
       <h2 class="section-title" id="current-members">Current Members</h2>
 
-      <section class="team-grid" id="currentMembersGrid">
-        <article class="team-card">
-          <div class="team-avatar photo teal">
-            <img src="./assets/people/sam-fang.jpg" alt="Sam Fang" />
-          </div>
-          <div class="team-badge">PhD Student</div>
-          <div class="team-name">
-            <a
-              href="https://www.linkedin.com/in/samuel-fang-295845227/"
-              target="_blank"
-              rel="noopener"
-              >Sam Fang<span class="sr-only"> (opens in new tab)</span></a
-            >
-          </div>
-          <div class="team-role">Ph.D. Student, Systems Engineering</div>
-          <div class="team-years">2026 &ndash; present</div>
-        </article>
-        <article class="team-card">
-          <div class="team-avatar photo coral">
-            <img src="./assets/people/zachary-king.jpg" alt="Zachary King" />
-          </div>
-          <div class="team-badge">Postdoc</div>
-          <div class="team-name">Zachary King</div>
-          <div class="team-role">Postdoctoral Fellow</div>
-          <div class="team-years">2026 &ndash; present</div>
-        </article>
-        <article class="team-card">
-          <div class="team-avatar photo emerald">
-            <img
-              src="./assets/people/indrajeet-ghosh.jpg"
-              alt="Indrajeet Ghosh"
-            />
-          </div>
-          <div class="team-badge">Postdoc</div>
-          <div class="team-name">
-            <a
-              href="https://sites.google.com/view/indrajeetghosh/"
-              target="_blank"
-              rel="noopener"
-              >Indrajeet Ghosh<span class="sr-only">
-                (opens in new tab)</span
-              ></a
-            >
-          </div>
-          <div class="team-role">Postdoctoral Fellow</div>
-          <div class="team-years">2025 &ndash; present</div>
-        </article>
-        <article class="team-card">
-          <div class="team-avatar photo cyan">
-            <img
-              src="./assets/people/Alejandro_IDPicture-1.png"
-              alt="Alejandro Vistorte Salgado"
-            />
-          </div>
-          <div class="team-badge">PhD Student</div>
-          <div class="team-name">
-            <a
-              href="https://sites.google.com/view/a2vs"
-              target="_blank"
-              rel="noopener"
-              >Alejandro Vistorte Salgado<span class="sr-only">
-                (opens in new tab)</span
-              ></a
-            >
-          </div>
-          <div class="team-role">Ph.D. Student, Systems Engineering</div>
-          <div class="team-years">2025 &ndash; present</div>
-        </article>
-        <article class="team-card">
-          <div class="team-avatar photo violet">
-            <img src="./assets/people/xinyu-profile.jpeg" alt="Xinyu Chen" />
-          </div>
-          <div class="team-badge">PhD Student</div>
-          <div class="team-name">
-            <a
-              href="https://www.linkedin.com/in/xinyu-chen-5a5220255/"
-              target="_blank"
-              rel="noopener"
-              >Xinyu Chen<span class="sr-only"> (opens in new tab)</span></a
-            >
-          </div>
-          <div class="team-role">Ph.D. Student, Systems Engineering</div>
-          <div class="team-years">2025 &ndash; present</div>
-        </article>
-        <article class="team-card">
-          <div class="team-avatar photo rose">
-            <img
-              src="./assets/people/Screen-Shot-2023-08-14-at-11.15.59-AM.png"
-              alt="Md Sabbir Ahmed"
-            />
-          </div>
-          <div class="team-badge">PhD Student</div>
-          <div class="team-name">
-            <a
-              href="https://sites.google.com/view/sabbir-eub"
-              target="_blank"
-              rel="noopener"
-              >Sabbir Ahmed<span class="sr-only"> (opens in new tab)</span></a
-            >
-          </div>
-          <div class="team-role">Ph.D. Student, Systems Engineering</div>
-          <div class="team-years">2023 &ndash; present</div>
-        </article>
-        <article class="team-card">
-          <div class="team-avatar photo amber">
-            <img
-              src="./assets/people/23UVA_Ariful_1074pp.jpg"
-              alt="Ariful Islam"
-            />
-          </div>
-          <div class="team-badge">PhD Student</div>
-          <div class="team-name">
-            <a
-              href="https://www.linkedin.com/in/arifulislam91/"
-              target="_blank"
-              rel="noopener"
-              >Ariful Islam<span class="sr-only"> (opens in new tab)</span></a
-            >
-          </div>
-          <div class="team-role">Ph.D. Student, Systems Engineering</div>
-          <div class="team-years">2024 &ndash; present</div>
-        </article>
-        <article class="team-card">
-          <div class="team-avatar photo sky">
-            <img src="./assets/people/Arafat.jpg" alt="Arafat Rahman" />
-          </div>
-          <div class="team-badge">PhD Student</div>
-          <div class="team-name">
-            <a
-              href="https://arafat245.github.io/"
-              target="_blank"
-              rel="noopener"
-              >Arafat Rahman<span class="sr-only"> (opens in new tab)</span></a
-            >
-          </div>
-          <div class="team-role">Ph.D. Student, Systems Engineering</div>
-          <div class="team-years">2022 &ndash; present</div>
-        </article>
-      </section>
+      <section class="team-grid" id="currentMembersGrid"></section>
+      <script src="./current-members-data.js"></script>
+      <script>
+        (function () {
+          var grid = document.getElementById('currentMembersGrid');
+          if (!grid || !window.S2HE_CURRENT_MEMBERS) return;
+          grid.innerHTML = window.S2HE_CURRENT_MEMBERS.map(function (m) {
+            var nameHtml = m.url
+              ? '<a href="' + m.url + '" target="_blank" rel="noopener">' + m.name + '<span class="sr-only"> (opens in new tab)</span></a>'
+              : m.name;
+            return (
+              '<article class="team-card">' +
+                '<div class="team-avatar photo ' + m.color + '">' +
+                  '<img src="' + m.photo + '" alt="' + m.alt + '" />' +
+                '</div>' +
+                '<div class="team-badge">' + m.badge + '</div>' +
+                '<div class="team-name">' + nameHtml + '</div>' +
+                '<div class="team-role">' + m.role + '</div>' +
+                '<div class="team-years">' + m.years + '</div>' +
+              '</article>'
+            );
+          }).join('');
+        })();
+      </script>
 
       <h2 class="section-title" id="past-members" style="margin-top: 56px">
         Former Members
