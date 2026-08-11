@@ -13,7 +13,7 @@ window.S2HE_CURRENT_MEMBERS = [
   },
   {
     name: "Zachary King",
-    url: null,
+    url: "https://www.linkedin.com/in/zachary-king-bab4b4231/",
     photo: "assets/people/zachary-king.jpg",
     alt: "Zachary King",
     color: "coral",
@@ -52,7 +52,7 @@ window.S2HE_CURRENT_MEMBERS = [
     years: "2025 &ndash; present",
   },
   {
-    name: "Sabbir Ahmed",
+    name: "Md Sabbir Ahmed",
     url: "https://sites.google.com/view/sabbir-eub",
     photo: "assets/people/Screen-Shot-2023-08-14-at-11.15.59-AM.png",
     alt: "Md Sabbir Ahmed",
