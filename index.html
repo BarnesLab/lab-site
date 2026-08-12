@@ -724,12 +724,17 @@ h1, h2, h3, h4 {
     </div>
   </div>
 </section>
-<script src="./current-members-data.js"></script>
+<script src="./data/current-members-data.js"></script>
 <script>
   (function () {
     var grid = document.getElementById('currentMembersGrid');
     if (!grid || !window.S2HE_CURRENT_MEMBERS) return;
-    grid.innerHTML = window.S2HE_CURRENT_MEMBERS.map(function (m) {
+    var positionOrder = { Postdoc: 0, 'PhD Student': 1 };
+    var members = window.S2HE_CURRENT_MEMBERS.slice().sort(function (a, b) {
+      var rank = positionOrder[a.position] - positionOrder[b.position];
+      return rank !== 0 ? rank : a.name.localeCompare(b.name);
+    });
+    grid.innerHTML = members.map(function (m) {
       var nameHtml = m.url
         ? '<a href="' + m.url + '" target="_blank" rel="noopener">' + m.name + '</a>'
         : m.name;
@@ -759,25 +764,28 @@ h1, h2, h3, h4 {
       </div>
       <h2 class="section-title" id="news-heading">Lab News</h2>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px;">
-      <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm);">
-        <div style="font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; color: var(--teal-dark); margin-bottom: 10px;">March 2026</div>
-        <h3 style="font-size: 1rem; font-weight: 500; color: var(--gray-900); margin-bottom: 10px; line-height: 1.35;">CALLM Paper Accepted at ACM CHI 2026</h3>
-        <p style="font-size: 0.9rem; color: var(--gray-500); line-height: 1.65;">Our work on understanding cancer survivors' emotions via mobile diaries and context-aware language models has been accepted at CHI 2026.</p>
-      </div>
-      <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm);">
-        <div style="font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; color: var(--teal-dark); margin-bottom: 10px;">February 2026</div>
-        <h3 style="font-size: 1rem; font-weight: 500; color: var(--gray-900); margin-bottom: 10px; line-height: 1.35;">SocialPulse: On-Device Social Interaction Detection</h3>
-        <p style="font-size: 0.9rem; color: var(--gray-500); line-height: 1.65;">New preprint on detecting social interactions in naturalistic settings using smartwatch multimodal sensing, led by Sabbir Ahmed.</p>
-      </div>
-      <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm);">
-        <div style="font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; color: var(--teal-dark); margin-bottom: 10px;">January 2026</div>
-        <h3 style="font-size: 1rem; font-weight: 500; color: var(--gray-900); margin-bottom: 10px; line-height: 1.35;">Dr. Zachary King Joins the Lab</h3>
-        <p style="font-size: 0.9rem; color: var(--gray-500); line-height: 1.65;">We welcome Dr. Zachary King as a new postdoctoral fellow, bringing expertise in wearable sensing and behavioral modeling.</p>
-      </div>
-    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px;" id="newsGrid"></div>
   </div>
 </section>
+<script src="./data/news-data.js"></script>
+<script>
+  (function () {
+    var grid = document.getElementById('newsGrid');
+    if (!grid || !window.S2HE_NEWS) return;
+    var items = window.S2HE_NEWS.slice()
+      .sort(function (a, b) { return new Date(b.date) - new Date(a.date); })
+      .slice(0, 3);
+    grid.innerHTML = items.map(function (n) {
+      return (
+        '<div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm);">' +
+          '<div style="font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; color: var(--teal-dark); margin-bottom: 10px;">' + n.label + '</div>' +
+          '<h3 style="font-size: 1rem; font-weight: 500; color: var(--gray-900); margin-bottom: 10px; line-height: 1.35;">' + n.title + '</h3>' +
+          '<p style="font-size: 0.9rem; color: var(--gray-500); line-height: 1.65;">' + n.body + '</p>' +
+        '</div>'
+      );
+    }).join('');
+  })();
+</script>
 </main>
 
 <!-- CONNECT -->
@@ -858,19 +866,6 @@ navLinks.querySelectorAll('a').forEach(link => {
     spans[2].style.transform = '';
   });
 });
-
-// Shuffle team cards
-(function() {
-  const grids = document.querySelectorAll('.team-grid');
-  grids.forEach((grid) => {
-    const cards = Array.from(grid.children);
-    for (let i = cards.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [cards[i], cards[j]] = [cards[j], cards[i]];
-    }
-    cards.forEach(card => grid.appendChild(card));
-  });
-})();
 </script>
 </body>
 </html>

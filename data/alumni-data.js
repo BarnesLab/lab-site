@@ -1,0 +1,118 @@
+// Single source of truth for the S2He Lab "Former Members" roster.
+// Loaded by people.html so alumni can be edited in one place.
+//
+// position: "GradStudent" | "PostDoc" | "Researcher"
+window.S2HE_ALUMNI = [
+  {
+    name: "Zhiyuan Wang",
+    url: "https://ryanwang.cc/",
+    gradYear: "2026",
+    now: "Research Scientist, Meta Reality Labs Research",
+    position: "GradStudent",
+  },
+  {
+    name: "Robert Gutierrez",
+    url: "https://www.linkedin.com/in/gutie2015/",
+    gradYear: "2022",
+    now: "Major, United States Air Force",
+    position: "GradStudent",
+  },
+  {
+    name: "Mark Rucker",
+    url: "https://www.linkedin.com/in/ruckermark/",
+    gradYear: "2025",
+    now: "Director, Mobile, AI, and People (MAP) Lab",
+    position: "GradStudent",
+  },
+  {
+    name: "Shashwat Kumar",
+    url: "",
+    gradYear: "2024",
+    now: "Postdoctoral Fellow, Biomedical Engineering, Johns Hopkins University",
+    position: "GradStudent",
+  },
+  {
+    name: "Navreet Kaur",
+    url: "https://www.linkedin.com/in/navreetkaurt/",
+    gradYear: "2024",
+    now: "Lead Data Scientist, Citi",
+    position: "GradStudent",
+  },
+  {
+    name: "Anna (Baglione) Spears",
+    url: "https://www.linkedin.com/in/annabaglione/",
+    gradYear: "2023",
+    now: "Senior Product Owner, Humana",
+    position: "GradStudent",
+  },
+  {
+    name: "Sonia Baee",
+    url: "https://www.linkedin.com/in/sonia-baee/",
+    gradYear: "2022",
+    now: "Machine Learning Engineering Manager, Apple",
+    position: "GradStudent",
+  },
+  {
+    name: "Mawulolo Ameko",
+    url: "https://www.linkedin.com/in/mawuloloameko12",
+    gradYear: "2021",
+    now: "Principal Consultant, Okema AI",
+    position: "GradStudent",
+  },
+  {
+    name: "Lihua Cai",
+    url: "https://www.linkedin.com/in/lihua-cai-37a68834/",
+    gradYear: "2020",
+    now: "Assistant Professor, South China Normal University",
+    position: "GradStudent",
+  },
+  {
+    name: "Kamran Kowsari",
+    url: "https://www.linkedin.com/in/kamran-kowsari-82a0454a/",
+    gradYear: "2020",
+    now: "Senior Data Scientist, University of California, Los Angeles Health",
+    position: "GradStudent",
+  },
+  {
+    name: "Alicia Nobles",
+    url: "https://www.linkedin.com/in/alicia-nobles/",
+    gradYear: "2018",
+    now: "Principal Data Scientist, Walmart Health",
+    position: "GradStudent",
+  },
+  {
+    name: "Nicholas Napoli",
+    url: "https://www.linkedin.com/in/nicholas-joseph-napoli-phd-26238b24/",
+    gradYear: "2018",
+    now: "Associate Professor, Department of Electrical and Computer Engineering, University of Florida",
+    position: "GradStudent",
+  },
+  {
+    name: "Jinghe Zhang",
+    url: "https://www.linkedin.com/in/jinghezhang/",
+    gradYear: "2017",
+    now: "Machine Learning Engineer, Apple",
+    position: "GradStudent",
+  },
+  {
+    name: "Haroon Rashid Lone",
+    url: "https://www.linkedin.com/in/loneharoon/",
+    gradYear: "2020",
+    now: "Assistant Professor, Indian Institute of Science Education and Research Bhopal",
+    position: "PostDoc",
+  },
+  {
+    name: "Mehdi Boukhechba",
+    url: "https://www.linkedin.com/in/mehdi-boukhechba-phd-06167270/",
+    gradYear: "2019",
+    now: "Senior Research Scientist, Johnson &amp; Johnson",
+    position: "PostDoc",
+  },
+  {
+    name: "Haoyi Xiong",
+    url: "https://www.linkedin.com/in/haoyixiong/",
+    gradYear: "2016",
+    now: "Principal Applied Scientist, Microsoft",
+    position: "PostDoc",
+  },
+];

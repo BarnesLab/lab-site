@@ -326,22 +326,6 @@
         margin-top: 4px;
       }
 
-      .team-badge {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 28px;
-        padding: 0 10px;
-        margin-bottom: 10px;
-        border-radius: 999px;
-        background: rgba(42, 175, 190, 0.1);
-        color: var(--teal-dark);
-        font-size: 0.72rem;
-        font-weight: 800;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-
       .section-kicker {
         font-size: 0.8rem;
         font-weight: 800;
@@ -396,40 +380,6 @@
         position: relative;
       }
 
-      .alumni-network::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 24px;
-        right: 24px;
-        height: 1px;
-        background: repeating-linear-gradient(
-          90deg,
-          var(--line) 0,
-          var(--line) 8px,
-          transparent 8px,
-          transparent 16px
-        );
-        z-index: 0;
-      }
-
-      .alumni-network::after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        top: 24px;
-        bottom: 24px;
-        width: 1px;
-        background: repeating-linear-gradient(
-          180deg,
-          var(--line) 0,
-          var(--line) 8px,
-          transparent 8px,
-          transparent 16px
-        );
-        z-index: 0;
-      }
-
       .alumni-card {
         border: 1px solid var(--line);
         border-radius: var(--radius);
@@ -473,12 +423,6 @@
         text-underline-offset: 2px;
       }
 
-      .alumni-grad-year {
-        font-size: 0.76rem;
-        color: var(--muted);
-        font-weight: 600;
-      }
-
       .alumni-now {
         font-size: 0.83rem;
         color: var(--ink-2);
@@ -489,6 +433,15 @@
 
       .alumni-now strong {
         color: var(--teal-dark);
+      }
+
+      .alumni-position {
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      .alumni-company {
+        color: var(--muted);
       }
 
       @media (max-width: 980px) {
@@ -521,10 +474,6 @@
         }
         .alumni-network {
           grid-template-columns: 1fr;
-        }
-        .alumni-network::before,
-        .alumni-network::after {
-          display: none;
         }
       }
     </style>
@@ -581,355 +530,135 @@
       <h2 class="section-title" id="current-members">Current Members</h2>
 
       <section class="team-grid" id="currentMembersGrid"></section>
-      <script src="./current-members-data.js"></script>
+      <script src="./data/current-members-data.js"></script>
       <script>
         (function () {
-          var grid = document.getElementById('currentMembersGrid');
+          var grid = document.getElementById("currentMembersGrid");
           if (!grid || !window.S2HE_CURRENT_MEMBERS) return;
-          grid.innerHTML = window.S2HE_CURRENT_MEMBERS.map(function (m) {
-            var nameHtml = m.url
-              ? '<a href="' + m.url + '" target="_blank" rel="noopener">' + m.name + '<span class="sr-only"> (opens in new tab)</span></a>'
-              : m.name;
-            return (
-              '<article class="team-card">' +
-                '<div class="team-avatar photo ' + m.color + '">' +
-                  '<img src="' + m.photo + '" alt="' + m.alt + '" />' +
-                '</div>' +
-                '<div class="team-badge">' + m.badge + '</div>' +
-                '<div class="team-name">' + nameHtml + '</div>' +
-                '<div class="team-role">' + m.role + '</div>' +
-                '<div class="team-years">' + m.years + '</div>' +
-              '</article>'
-            );
-          }).join('');
+          var positionOrder = { Postdoc: 0, "PhD Student": 1 };
+          var members = window.S2HE_CURRENT_MEMBERS.slice().sort(
+            function (a, b) {
+              var rank = positionOrder[a.position] - positionOrder[b.position];
+              return rank !== 0 ? rank : a.name.localeCompare(b.name);
+            },
+          );
+          grid.innerHTML = members
+            .map(function (m) {
+              var nameHtml = m.url
+                ? '<a href="' +
+                  m.url +
+                  '" target="_blank" rel="noopener">' +
+                  m.name +
+                  '<span class="sr-only"> (opens in new tab)</span></a>'
+                : m.name;
+              return (
+                '<article class="team-card">' +
+                '<div class="team-avatar photo ' +
+                m.color +
+                '">' +
+                '<img src="' +
+                m.photo +
+                '" alt="' +
+                m.alt +
+                '" />' +
+                "</div>" +
+                '<div class="team-name">' +
+                nameHtml +
+                "</div>" +
+                '<div class="team-role">' +
+                m.role +
+                "</div>" +
+                '<div class="team-years">' +
+                m.years +
+                "</div>" +
+                "</article>"
+              );
+            })
+            .join("");
         })();
       </script>
 
       <h2 class="section-title" id="past-members" style="margin-top: 56px">
-        Former Members
+        <!-- Former Members -->
       </h2>
 
       <section class="alumni-subsection">
-        <div class="alumni-network">
-          <div class="alumni-card">
-            <div class="alumni-card-top">
-              <div class="alumni-card-info">
-                <h3>
-                  <a href="https://ryanwang.cc/" target="_blank" rel="noopener"
-                    >Zhiyuan Wang<span class="sr-only">
-                      (opens in new tab)</span
-                    ></a
-                  >
-                </h3>
-                <div class="alumni-grad-year">Spring 2026</div>
-              </div>
-            </div>
-            <div class="alumni-now">
-              <strong>Now:</strong> Research Scientist, Meta Reality Labs
-              Research
-            </div>
-          </div>
-          <div class="alumni-card">
-            <div class="alumni-card-top">
-              <div class="alumni-card-info">
-                <h3>
-                  <a
-                    href="https://www.linkedin.com/in/gutie2015/"
-                    target="_blank"
-                    rel="noopener"
-                    >Robert Gutierrez<span class="sr-only">
-                      (opens in new tab)</span
-                    ></a
-                  >
-                </h3>
-                <div class="alumni-grad-year">Summer 2022</div>
-              </div>
-            </div>
-            <div class="alumni-now">
-              <strong>Now:</strong> Major, United States Air Force
-            </div>
-          </div>
-          <div class="alumni-card">
-            <div class="alumni-card-top">
-              <div class="alumni-card-info">
-                <h3>
-                  <a
-                    href="https://www.linkedin.com/in/ruckermark/"
-                    target="_blank"
-                    rel="noopener"
-                    >Mark Rucker<span class="sr-only">
-                      (opens in new tab)</span
-                    ></a
-                  >
-                </h3>
-                <div class="alumni-grad-year">Fall 2025</div>
-              </div>
-            </div>
-            <div class="alumni-now">
-              <strong>Now:</strong> Director, Digital Technology Core,
-              University of Virginia Research Computing
-            </div>
-          </div>
-          <div class="alumni-card">
-            <div class="alumni-card-top">
-              <div class="alumni-card-info">
-                <h3>Shashwat Kumar</h3>
-                <div class="alumni-grad-year">Summer 2024</div>
-              </div>
-            </div>
-            <div class="alumni-now">
-              <strong>Now:</strong> Postdoctoral Fellow, Biomedical Engineering,
-              Johns Hopkins University
-            </div>
-          </div>
-          <div class="alumni-card">
-            <div class="alumni-card-top">
-              <div class="alumni-card-info">
-                <h3>
-                  <a
-                    href="https://www.linkedin.com/in/navreetkaurt/"
-                    target="_blank"
-                    rel="noopener"
-                    >Navreet Kaur<span class="sr-only">
-                      (opens in new tab)</span
-                    ></a
-                  >
-                </h3>
-                <div class="alumni-grad-year">Spring 2024</div>
-              </div>
-            </div>
-            <div class="alumni-now">
-              <strong>Now:</strong> Lead Data Scientist, Citi
-            </div>
-          </div>
-          <div class="alumni-card">
-            <div class="alumni-card-top">
-              <div class="alumni-card-info">
-                <h3>
-                  <a
-                    href="https://www.linkedin.com/in/annabaglione/"
-                    target="_blank"
-                    rel="noopener"
-                    >Anna (Baglione) Spears<span class="sr-only">
-                      (opens in new tab)</span
-                    ></a
-                  >
-                </h3>
-                <div class="alumni-grad-year">Spring 2023</div>
-              </div>
-            </div>
-            <div class="alumni-now">
-              <strong>Now:</strong> Senior Product Owner, Humana
-            </div>
-          </div>
-          <div class="alumni-card">
-            <div class="alumni-card-top">
-              <div class="alumni-card-info">
-                <h3>
-                  <a
-                    href="https://www.linkedin.com/in/sonia-baee/"
-                    target="_blank"
-                    rel="noopener"
-                    >Sonia Baee<span class="sr-only">
-                      (opens in new tab)</span
-                    ></a
-                  >
-                </h3>
-                <div class="alumni-grad-year">Summer 2022</div>
-              </div>
-            </div>
-            <div class="alumni-now">
-              <strong>Now:</strong> Machine Learning Engineering Manager, Apple
-            </div>
-          </div>
-          <div class="alumni-card">
-            <div class="alumni-card-top">
-              <div class="alumni-card-info">
-                <h3>
-                  <a
-                    href="https://www.linkedin.com/in/mawuloloameko12"
-                    target="_blank"
-                    rel="noopener"
-                    >Mawulolo Ameko<span class="sr-only">
-                      (opens in new tab)</span
-                    ></a
-                  >
-                </h3>
-                <div class="alumni-grad-year">Fall 2021</div>
-              </div>
-            </div>
-            <div class="alumni-now">
-              <strong>Now:</strong> Principal Consultant, Okema AI
-            </div>
-          </div>
-          <div class="alumni-card">
-            <div class="alumni-card-top">
-              <div class="alumni-card-info">
-                <h3>
-                  <a
-                    href="https://www.linkedin.com/in/lihua-cai-37a68834/"
-                    target="_blank"
-                    rel="noopener"
-                    >Lihua Cai<span class="sr-only">
-                      (opens in new tab)</span
-                    ></a
-                  >
-                </h3>
-                <div class="alumni-grad-year">Spring 2020</div>
-              </div>
-            </div>
-            <div class="alumni-now">
-              <strong>Now:</strong> Assistant Professor, South China Normal
-              University
-            </div>
-          </div>
-          <div class="alumni-card">
-            <div class="alumni-card-top">
-              <div class="alumni-card-info">
-                <h3>
-                  <a
-                    href="https://www.linkedin.com/in/kamran-kowsari-82a0454a/"
-                    target="_blank"
-                    rel="noopener"
-                    >Kamran Kowsari<span class="sr-only">
-                      (opens in new tab)</span
-                    ></a
-                  >
-                </h3>
-                <div class="alumni-grad-year">Spring 2020</div>
-              </div>
-            </div>
-            <div class="alumni-now">
-              <strong>Now:</strong> Senior Data Scientist, University of
-              California, Los Angeles Health
-            </div>
-          </div>
-          <div class="alumni-card">
-            <div class="alumni-card-top">
-              <div class="alumni-card-info">
-                <h3>
-                  <a
-                    href="https://www.linkedin.com/in/alicia-nobles/"
-                    target="_blank"
-                    rel="noopener"
-                    >Alicia Nobles<span class="sr-only">
-                      (opens in new tab)</span
-                    ></a
-                  >
-                </h3>
-                <div class="alumni-grad-year">Fall 2018</div>
-              </div>
-            </div>
-            <div class="alumni-now">
-              <strong>Now:</strong> Principal Data Scientist, Walmart Health
-            </div>
-          </div>
-          <div class="alumni-card">
-            <div class="alumni-card-top">
-              <div class="alumni-card-info">
-                <h3>
-                  <a
-                    href="https://www.linkedin.com/in/nicholas-joseph-napoli-phd-26238b24/"
-                    target="_blank"
-                    rel="noopener"
-                    >Nicholas Napoli<span class="sr-only">
-                      (opens in new tab)</span
-                    ></a
-                  >
-                </h3>
-                <div class="alumni-grad-year">Spring 2018</div>
-              </div>
-            </div>
-            <div class="alumni-now">
-              <strong>Now:</strong> Associate Professor, Department of
-              Electrical and Computer Engineering, University of Florida
-            </div>
-          </div>
-          <div class="alumni-card">
-            <div class="alumni-card-top">
-              <div class="alumni-card-info">
-                <h3>
-                  <a
-                    href="https://www.linkedin.com/in/jinghezhang/"
-                    target="_blank"
-                    rel="noopener"
-                    >Jinghe Zhang<span class="sr-only">
-                      (opens in new tab)</span
-                    ></a
-                  >
-                </h3>
-                <div class="alumni-grad-year">Fall 2017</div>
-              </div>
-            </div>
-            <div class="alumni-now">
-              <strong>Now:</strong> Machine Learning Engineer, Apple
-            </div>
-          </div>
-          <div class="alumni-card">
-            <div class="alumni-card-top">
-              <div class="alumni-card-info">
-                <h3>
-                  <a
-                    href="https://www.linkedin.com/in/loneharoon/"
-                    target="_blank"
-                    rel="noopener"
-                    >Haroon Rashid Lone<span class="sr-only">
-                      (opens in new tab)</span
-                    ></a
-                  >
-                </h3>
-                <div class="alumni-grad-year">2018 &ndash; 2020</div>
-              </div>
-            </div>
-            <div class="alumni-now">
-              <strong>Now:</strong> Assistant Professor, Indian Institute of
-              Science Education and Research Bhopal
-            </div>
-          </div>
-          <div class="alumni-card">
-            <div class="alumni-card-top">
-              <div class="alumni-card-info">
-                <h3>
-                  <a
-                    href="https://www.linkedin.com/in/mehdi-boukhechba-phd-06167270/"
-                    target="_blank"
-                    rel="noopener"
-                    >Mehdi Boukhechba<span class="sr-only">
-                      (opens in new tab)</span
-                    ></a
-                  >
-                </h3>
-                <div class="alumni-grad-year">2017 &ndash; 2019</div>
-              </div>
-            </div>
-            <div class="alumni-now">
-              <strong>Now:</strong> Senior Research Scientist, Johnson &amp;
-              Johnson
-            </div>
-          </div>
-
-          <div class="alumni-card">
-            <div class="alumni-card-top">
-              <div class="alumni-card-info">
-                <h3>
-                  <a
-                    href="https://www.linkedin.com/in/haoyixiong/"
-                    target="_blank"
-                    rel="noopener"
-                    >Haoyi Xiong<span class="sr-only">
-                      (opens in new tab)</span
-                    ></a
-                  >
-                </h3>
-                <div class="alumni-grad-year">2015 &ndash; 2016</div>
-              </div>
-            </div>
-            <div class="alumni-now">
-              <strong>Now:</strong> Principal Applied Scientist, Microsoft
-            </div>
-          </div>
-        </div>
+        <h3 class="alumni-subsection-title">
+          Former Postdoctoral Fellows and Research Scientists
+        </h3>
+        <div class="alumni-network" id="alumniPostdocGrid"></div>
       </section>
+
+      <section class="alumni-subsection">
+        <h3 class="alumni-subsection-title">Former Graduate Students</h3>
+        <div class="alumni-network" id="alumniGradGrid"></div>
+      </section>
+
+      <script src="./data/alumni-data.js"></script>
+      <script>
+        (function () {
+          var gradGrid = document.getElementById("alumniGradGrid");
+          var postdocGrid = document.getElementById("alumniPostdocGrid");
+          if (!gradGrid || !postdocGrid || !window.S2HE_ALUMNI) return;
+
+          function renderCard(a) {
+            var nameHtml = a.url
+              ? '<a href="' +
+                a.url +
+                '" target="_blank" rel="noopener">' +
+                a.name +
+                '<span class="sr-only"> (opens in new tab)</span></a>'
+              : a.name;
+            var commaIdx = a.now.indexOf(",");
+            var nowHtml = a.now;
+            if (commaIdx !== -1) {
+              var position = a.now.slice(0, commaIdx);
+              var company = a.now.slice(commaIdx + 1).trim();
+              nowHtml =
+                '<span class="alumni-position">' +
+                position +
+                "</span>, " +
+                '<span class="alumni-company">' +
+                company +
+                "</span>";
+            }
+            return (
+              '<div class="alumni-card">' +
+              '<div class="alumni-card-top">' +
+              '<div class="alumni-card-info">' +
+              "<h3>" +
+              nameHtml +
+              "</h3>" +
+              "</div>" +
+              "</div>" +
+              '<div class="alumni-now"><strong>Now:</strong> ' +
+              nowHtml +
+              "</div>" +
+              "</div>"
+            );
+          }
+
+          function latestYear(gradYear) {
+            var matches = gradYear.match(/\d{4}/g);
+            return matches ? Number(matches[matches.length - 1]) : 0;
+          }
+
+          function byYearDescThenName(a, b) {
+            var yearDiff = latestYear(b.gradYear) - latestYear(a.gradYear);
+            return yearDiff !== 0 ? yearDiff : a.name.localeCompare(b.name);
+          }
+
+          var grads = window.S2HE_ALUMNI.filter(function (a) {
+            return a.position === "GradStudent";
+          }).sort(byYearDescThenName);
+          var postdocs = window.S2HE_ALUMNI.filter(function (a) {
+            return a.position === "PostDoc" || a.position === "Researcher";
+          }).sort(byYearDescThenName);
+
+          gradGrid.innerHTML = grads.map(renderCard).join("");
+          postdocGrid.innerHTML = postdocs.map(renderCard).join("");
+        })();
+      </script>
     </main>
 
     <script>
